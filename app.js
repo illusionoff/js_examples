@@ -1456,27 +1456,71 @@ console.log('array1:', array1);
 
 // test среднего значения
 
-Number.prototype.round = function (places) {
-  return +(Math.round(this + "e+" + places) + "e-" + places);
+// Number.prototype.round = function (places) {
+//   return +(Math.round(this + "e+" + places) + "e-" + places);
+// }
+
+// // let initialBith = { arrChart: { b: [11.32746387427, 20, 20, 40] } };
+// let initialBith = { arrChart: { b: [11.32746387427, 12, 13, 12] } };
+// let b = initialBith.arrChart.b;
+// let sum = b.reduce((accum, item) => {
+//   accum += item;
+//   return accum;
+// });
+// let average = sum / b.length;
+// let averageRound = average.round(8);//округляем
+// let max = Math.max(...b);
+// let min = Math.min(...b);
+// // отклонение max - min от среднего на 3%
+// console.log('((max - min) / averageRound)=', (max - min) / averageRound);
+// let flag = (max - min) / averageRound > 0.3 ? true : false;
+// console.log('sum=', sum);
+// console.log('average=', average);
+// console.log('averageRound=', averageRound);
+// console.log('max=', max);
+// console.log('min=', min);
+// console.log('flag=', flag);
+
+// Тест посика индексов в массиве sell, bay с самими большими отклонениями для testqueezebith
+
+const arrB = [1.19, 1.19, 1.22, 1.19, 1.13, 1.18, 1.19, 1.22, 1.18, 1.17, 1.17, 1.10, 1.17, 1.17, 1.17];
+
+// //#12.5 reduce сумма положительных чисел работает
+// let a = [-3, 4, -5, 7, -6, 2];
+// let b = a.reduce( (accum, item) => {
+//  if (item > 0) {
+//   accum += item
+//  }
+//   return accum;
+// }, 0); // Начальное значение аккумулятора 0
+
+// в arrB находим наибольшоую разницу в сторону возростания
+function diffMaxIndexS(obj) {
+  //obj = { arr: arr, sell: true }
+  let arrDiffMaxIndex = [];
+
+  for (let i = 0; i < 3; i++) {
+    arrDiffMaxIndex.push(diffMaxIndex(obj, arrDiffMaxIndex));
+  }
+
+  function diffMaxIndex(obj) { // true = sell, false = bay
+    let diffMax = obj.arr.reduce((accum, item, index, arr) => {
+      let preIndex = 0;
+      preIndex = index - 1;
+      if (preIndex < 2) return accum
+      if (arrDiffMaxIndex.includes(preIndex)) return accum
+      let diff = item - arr[preIndex];
+      if (obj.sell) diff = -diff;
+      if (diff > accum.diff) {
+        accum.diff = diff;
+        accum.index = preIndex;
+        return accum
+      }
+      return accum
+    }, { diff: 0, index: 0 }); // Начальное значение аккумулятора 0
+    return diffMax.index
+  }
+  return arrDiffMaxIndex
 }
 
-// let initialBith = { arrChart: { b: [11.32746387427, 20, 20, 40] } };
-let initialBith = { arrChart: { b: [11.32746387427, 12, 13, 12] } };
-let b = initialBith.arrChart.b;
-let sum = b.reduce((accum, item) => {
-  accum += item;
-  return accum;
-});
-let average = sum / b.length;
-let averageRound = average.round(8);//округляем
-let max = Math.max(...b);
-let min = Math.min(...b);
-// отклонение max - min от среднего на 3%
-console.log('((max - min) / averageRound)=', (max - min) / averageRound);
-let flag = (max - min) / averageRound > 0.3 ? true : false;
-console.log('sum=', sum);
-console.log('average=', average);
-console.log('averageRound=', averageRound);
-console.log('max=', max);
-console.log('min=', min);
-console.log('flag=', flag);
+console.log('diffMaxIndexS({ arr: arrB, sell: true })=', diffMaxIndexS({ arr: arrB, sell: false }));

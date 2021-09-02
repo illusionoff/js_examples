@@ -1524,3 +1524,22 @@ function diffMaxIndexS(obj) {
 }
 
 console.log('diffMaxIndexS({ arr: arrB, sell: true })=', diffMaxIndexS({ arr: arrB, sell: false }));
+
+
+// среднее значение чисел average
+Number.prototype.round = function (places) {
+  return +(Math.round(this + "e+" + places) + "e-" + places);
+}
+
+function average(arr) {
+  const sum = arr.reduce((accum, item) => accum += item);
+  const average = sum / arr.length;
+  // const averageRound = average.round(1);//округляем
+  const averageRound = Math.round(average);
+  return averageRound
+}
+
+console.log('average=', average([2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5]));
+
+
+console.log('Math.round(2,77)=', Math.round(2.49));

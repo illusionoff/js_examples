@@ -1483,7 +1483,8 @@ console.log('array1:', array1);
 
 // Тест посика индексов в массиве sell, bay с самими большими отклонениями для testqueezebith
 
-const arrB = [1.19, 1.19, 1.22, 1.19, 1.13, 1.18, 1.19, 1.22, 1.18, 1.17, 1.17, 1.10, 1.17, 1.17, 1.17];
+// const arrB = [1.19, 1.19, 1.22, 1.19, 1.13, 1.18, 1.19, 1.22, 1.18, 1.17, 1.17, 1.10, 1.17, 1.17, 1.17];
+const arrB = [1.19, 1.19, 1.19, 1.19, 1.19, 1.30, 1.19, 1.19, 1.19, 1.19, 1.19, 1.19, 1.19, 1.19, 1.19];
 
 // //#12.5 reduce сумма положительных чисел работает
 // let a = [-3, 4, -5, 7, -6, 2];
@@ -1495,35 +1496,38 @@ const arrB = [1.19, 1.19, 1.22, 1.19, 1.13, 1.18, 1.19, 1.22, 1.18, 1.17, 1.17, 
 // }, 0); // Начальное значение аккумулятора 0
 
 // в arrB находим наибольшоую разницу в сторону возростания
+function diffMaxIndex(obj, arrDiffMaxIndex) { // true = sell, false = bay
+  let diffMax = obj.arr.reduce((accum, item, index, arr) => {
+    let preIndex = 0;
+    preIndex = index - 1;
+    if (preIndex < 2) return accum
+    if (arrDiffMaxIndex.includes(preIndex)) return accum
+    let diff = item - arr[preIndex];
+    if (obj.sell) diff = -diff;
+    if (diff > accum.diff) {
+      accum.diff = diff;
+      accum.index = preIndex;
+      return accum
+    }
+    return accum
+  }, { diff: 0, index: 0 }); // Начальное значение аккумулятора 0
+  return diffMax.index
+}
+
 function diffMaxIndexS(obj) {
   //obj = { arr: arr, sell: true }
   let arrDiffMaxIndex = [];
 
   for (let i = 0; i < 3; i++) {
-    arrDiffMaxIndex.push(diffMaxIndex(obj, arrDiffMaxIndex));
+    const resDiff = diffMaxIndex(obj, arrDiffMaxIndex);
+    resDiff != 0 ? arrDiffMaxIndex.push(resDiff) : false
   }
 
-  function diffMaxIndex(obj) { // true = sell, false = bay
-    let diffMax = obj.arr.reduce((accum, item, index, arr) => {
-      let preIndex = 0;
-      preIndex = index - 1;
-      if (preIndex < 2) return accum
-      if (arrDiffMaxIndex.includes(preIndex)) return accum
-      let diff = item - arr[preIndex];
-      if (obj.sell) diff = -diff;
-      if (diff > accum.diff) {
-        accum.diff = diff;
-        accum.index = preIndex;
-        return accum
-      }
-      return accum
-    }, { diff: 0, index: 0 }); // Начальное значение аккумулятора 0
-    return diffMax.index
-  }
   return arrDiffMaxIndex
 }
 
-console.log('diffMaxIndexS({ arr: arrB, sell: true })=', diffMaxIndexS({ arr: arrB, sell: false }));
+console.log('diffMaxIndexS({ arr: arrB, sell: false })=', diffMaxIndexS({ arr: arrB, sell: false }));
+console.log('diffMaxIndexS({ arr: arrB, sell: true })=', diffMaxIndexS({ arr: arrB, sell: true }));
 
 
 // среднее значение чисел average

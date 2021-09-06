@@ -1068,6 +1068,40 @@
 //   startPing();
 // }, 40000);
 
+let ping;
+function startPing(time) {
+  ping = setInterval(function () {
+    // ping = null;
+
+    // ws.send(JSON.stringify({ "cmd": "ping" }));
+    let timeNaw = new Date().getTime();
+    console.log('time ping bith======================================', timeNaw);
+    // console.log(`ping =${ping}`);
+    // console.log('ping._idleNext=', ping._idleNext);
+    // console.log('ping._idlePrev=', ping._idlePrev);
+    // console.log('ping._idleNext=', ping._idleNext.TimersList._idleNext);
+    // console.log('ping._idlePrev=', ping._idlePrev);
+  }, time);
+}
+
+function stopPing() {
+  // сonsole.log('stopPing=', stopPing);
+  // ping = null;
+  clearInterval(ping);
+}
+
+
+startPing(5000);
+
+stopPing();
+
+startPing(5000);
+
+startPing(5000);
+
+
+
+
 
 // Тест return в if выводит из всей функции, а не тоько из самого if
 
@@ -1496,54 +1530,66 @@ const arrB = [1.19, 1.19, 1.19, 1.19, 1.19, 1.30, 1.19, 1.19, 1.19, 1.19, 1.19, 
 // }, 0); // Начальное значение аккумулятора 0
 
 // в arrB находим наибольшоую разницу в сторону возростания
-function diffMaxIndex(obj, arrDiffMaxIndex) { // true = sell, false = bay
-  let diffMax = obj.arr.reduce((accum, item, index, arr) => {
-    let preIndex = 0;
-    preIndex = index - 1;
-    if (preIndex < 2) return accum
-    if (arrDiffMaxIndex.includes(preIndex)) return accum
-    let diff = item - arr[preIndex];
-    if (obj.sell) diff = -diff;
-    if (diff > accum.diff) {
-      accum.diff = diff;
-      accum.index = preIndex;
-      return accum
-    }
-    return accum
-  }, { diff: 0, index: 0 }); // Начальное значение аккумулятора 0
-  return diffMax.index
-}
+// function diffMaxIndex(obj, arrDiffMaxIndex) { // true = sell, false = bay
+//   let diffMax = obj.arr.reduce((accum, item, index, arr) => {
+//     let preIndex = 0;
+//     preIndex = index - 1;
+//     if (preIndex < 2) return accum
+//     if (arrDiffMaxIndex.includes(preIndex)) return accum
+//     let diff = item - arr[preIndex];
+//     if (obj.sell) diff = -diff;
+//     if (diff > accum.diff) {
+//       accum.diff = diff;
+//       accum.index = preIndex;
+//       return accum
+//     }
+//     return accum
+//   }, { diff: 0, index: 0 }); // Начальное значение аккумулятора 0
+//   return diffMax.index
+// }
 
-function diffMaxIndexS(obj) {
-  //obj = { arr: arr, sell: true }
-  let arrDiffMaxIndex = [];
+// function diffMaxIndexS(obj) {
+//   //obj = { arr: arr, sell: true }
+//   let arrDiffMaxIndex = [];
 
-  for (let i = 0; i < 3; i++) {
-    const resDiff = diffMaxIndex(obj, arrDiffMaxIndex);
-    resDiff != 0 ? arrDiffMaxIndex.push(resDiff) : false
-  }
+//   for (let i = 0; i < 3; i++) {
+//     const resDiff = diffMaxIndex(obj, arrDiffMaxIndex);
+//     resDiff != 0 ? arrDiffMaxIndex.push(resDiff) : false
+//   }
 
-  return arrDiffMaxIndex
-}
+//   return arrDiffMaxIndex
+// }
 
-console.log('diffMaxIndexS({ arr: arrB, sell: false })=', diffMaxIndexS({ arr: arrB, sell: false }));
-console.log('diffMaxIndexS({ arr: arrB, sell: true })=', diffMaxIndexS({ arr: arrB, sell: true }));
-
-
-// среднее значение чисел average
-Number.prototype.round = function (places) {
-  return +(Math.round(this + "e+" + places) + "e-" + places);
-}
-
-function average(arr) {
-  const sum = arr.reduce((accum, item) => accum += item);
-  const average = sum / arr.length;
-  // const averageRound = average.round(1);//округляем
-  const averageRound = Math.round(average);
-  return averageRound
-}
-
-console.log('average=', average([2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5]));
+// console.log('diffMaxIndexS({ arr: arrB, sell: false })=', diffMaxIndexS({ arr: arrB, sell: false }));
+// console.log('diffMaxIndexS({ arr: arrB, sell: true })=', diffMaxIndexS({ arr: arrB, sell: true }));
 
 
-console.log('Math.round(2,77)=', Math.round(2.49));
+// // среднее значение чисел average
+// Number.prototype.round = function (places) {
+//   return +(Math.round(this + "e+" + places) + "e-" + places);
+// }
+
+// function average(arr) {
+//   const sum = arr.reduce((accum, item) => accum += item);
+//   const average = sum / arr.length;
+//   // const averageRound = average.round(1);//округляем
+//   const averageRound = Math.round(average);
+//   return averageRound
+// }
+
+// console.log('average=', average([2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5]));
+
+
+// console.log('Math.round(2,77)=', Math.round(2.49));
+
+
+// // еще один способ прохода массива
+
+// const tags = ['one', 'two', 'tree'];
+// let html = '<h2> other</h2>';
+
+// for (const x of tags) {
+//   html += `<li>${x}</li>`;
+// }
+
+// console.log('html=', html);

@@ -1068,37 +1068,31 @@
 //   startPing();
 // }, 40000);
 
+
+// получилось запускать только один экземпляр таймера при многократном запуске функции. и ее останов
 let ping;
 function startPing(time) {
+  clearInterval(ping);
   ping = setInterval(function () {
-    // ping = null;
-
     // ws.send(JSON.stringify({ "cmd": "ping" }));
     let timeNaw = new Date().getTime();
     console.log('time ping bith======================================', timeNaw);
-    // console.log(`ping =${ping}`);
-    // console.log('ping._idleNext=', ping._idleNext);
-    // console.log('ping._idlePrev=', ping._idlePrev);
-    // console.log('ping._idleNext=', ping._idleNext.TimersList._idleNext);
-    // console.log('ping._idlePrev=', ping._idlePrev);
   }, time);
 }
 
 function stopPing() {
-  // сonsole.log('stopPing=', stopPing);
-  // ping = null;
   clearInterval(ping);
+  console.log('stopPing');
 }
 
-
 startPing(5000);
-
 stopPing();
-
 startPing(5000);
-
 startPing(5000);
-
+startPing(5000);
+startPing(5000);
+startPing(5000);
+stopPing();
 
 
 

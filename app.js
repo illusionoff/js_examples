@@ -1085,16 +1085,15 @@ function stopPing() {
   console.log('stopPing');
 }
 
-startPing(5000);
+
 stopPing();
 startPing(5000);
 startPing(5000);
 startPing(5000);
 startPing(5000);
 startPing(5000);
-stopPing();
-
-
+// Без разницы сколько раз вызывать функцию startPing(5000) будет только один таймер без его копий
+// если сразу запустить stopPing() ошибки не будет
 
 
 // Тест return в if выводит из всей функции, а не тоько из самого if

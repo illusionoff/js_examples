@@ -45,6 +45,7 @@
 //  #37 Задачи на собеседование
 //  #38 reverse() реверс - на месте обращает порядок следования элементов массива. Первый элемент массива становится последним, а последний — первым.
 //  #39 Визуальная оптимизация кода +
+// #100 получилось запускать только один экземпляр таймера при многократном запуске функции. и ее останов
 
 // // Снипперы
 // // #1 округление в меньшую сторону до целых
@@ -1069,29 +1070,32 @@
 // }, 40000);
 
 
-// получилось запускать только один экземпляр таймера при многократном запуске функции. и ее останов
-let ping;
-function startPing(time) {
-  clearInterval(ping);
-  ping = setInterval(function () {
-    // ws.send(JSON.stringify({ "cmd": "ping" }));
-    let timeNaw = new Date().getTime();
-    console.log('time ping bith======================================', timeNaw);
-  }, time);
-}
+// #100 получилось запускать только один экземпляр таймера при многократном запуске функции. и ее останов
+// let ping;
+// function startPing(time) {
+//   clearInterval(ping);
+//   ping = setInterval(function () {
+//     // ws.send(JSON.stringify({ "cmd": "ping" }));
+//     let timeNaw = new Date().getTime();
+//     console.log('time ping bith======================================', timeNaw);
+//   }, time);
+// }
 
-function stopPing() {
-  clearInterval(ping);
-  console.log('stopPing');
-}
+// function stopPing() {
+//   clearInterval(ping);
+//   console.log('stopPing');
+// }
 
 
-stopPing();
-startPing(5000);
-startPing(5000);
-startPing(5000);
-startPing(5000);
-startPing(5000);
+// stopPing();
+// startPing(5000);
+// startPing(5000);
+// startPing(5000);
+// startPing(5000);
+// startPing(5000);
+////
+
+
 // Без разницы сколько раз вызывать функцию startPing(5000) будет только один таймер без его копий
 // если сразу запустить stopPing() ошибки не будет
 
@@ -1586,3 +1590,20 @@ const arrB = [1.19, 1.19, 1.19, 1.19, 1.19, 1.30, 1.19, 1.19, 1.19, 1.19, 1.19, 
 // }
 
 // console.log('html=', html);
+
+
+// тест оборачивания переменной в объект и вывод строкового названия переменной вместе с значением переменной
+
+// не все равно не получается
+(function () {
+  var getVarName = function tmp() {
+    let n = /getVarName\(([^)]+?)\)/.exec(tmp.caller !== null ? tmp.caller.toString() : '');
+
+    return n !== null ? n[1] : false;
+  }
+
+  let myVarName123456 = 1;
+  let myVarName2 = 2;
+  console.info(getVarName(myVarName123456)); // myVarName123456
+  console.info(getVarName(myVarName2)); // myVarName123456
+}());

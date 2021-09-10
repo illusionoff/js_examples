@@ -1607,19 +1607,19 @@ const arrB = [1.19, 1.19, 1.19, 1.19, 1.19, 1.30, 1.19, 1.19, 1.19, 1.19, 1.19, 
 //   console.info(getVarName(myVarName123456)); // myVarName123456
 //   console.info(getVarName(myVarName2)); // myVarName123456
 // }());
+
+// Работает такой вариант
 const countReconnect = 1;
 const countReconnectCode0 = 2;
 const countErrors = 3;
-
-
 let arrVar = ['countReconnect', 'countReconnectCode0', 'countErrors']
-function consoleGroupLog(arrVar) {
-  let abj = {};
-  arrVar.forEach((item) => {
-    abj[item] = item
-    console.log(`${abj[item]}`, item);
-  })
-  console.log('arrVar=', arrVar);
-  console.log('abj=', abj);;
+function consoleGroupLog(arrVar) { arrVar.forEach((item) => console.log(`${item}`, eval(item))) }
+// consoleGroupLog(arrVar);
+
+// если переменные вставлять в объекты как свойства объекта
+// но тогда добрать до переменной сложнее obj.countReconnect вместо просто countReconnect
+let obj = { countReconnect: 1, countReconnectCode0: 2, countErrors: 3 };
+function consoleGroupLogObj(obj) {
+  for (let key in obj) console.log(`${key} = `, obj[key])
 }
-consoleGroupLog(arrVar);
+consoleGroupLogObj(obj);

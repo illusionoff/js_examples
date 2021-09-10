@@ -1619,7 +1619,11 @@ function consoleGroupLog(arrVar) { arrVar.forEach((item) => console.log(`${item}
 // если переменные вставлять в объекты как свойства объекта
 // но тогда добрать до переменной сложнее obj.countReconnect вместо просто countReconnect
 let obj = { countReconnect: 1, countReconnectCode0: 2, countErrors: 3 };
-function consoleGroupLogObj(obj) {
+function consoleGroupLog(arr) {
   for (let key in obj) console.log(`${key} = `, obj[key])
+  //   arr.forEach((item) => {
+  // console.log(``, )
 }
-consoleGroupLogObj(obj);
+
+consoleGroupLog(obj);
+// consoleGroupLogObj([obj.countReconnect, obj.countReconnectCode0]);

@@ -1595,15 +1595,31 @@ const arrB = [1.19, 1.19, 1.19, 1.19, 1.19, 1.30, 1.19, 1.19, 1.19, 1.19, 1.19, 
 // тест оборачивания переменной в объект и вывод строкового названия переменной вместе с значением переменной
 
 // не все равно не получается
-(function () {
-  var getVarName = function tmp() {
-    let n = /getVarName\(([^)]+?)\)/.exec(tmp.caller !== null ? tmp.caller.toString() : '');
+// (function () {
+//   var getVarName = function tmp() {
+//     let n = /getVarName\(([^)]+?)\)/.exec(tmp.caller !== null ? tmp.caller.toString() : '');
 
-    return n !== null ? n[1] : false;
-  }
+//     return n !== null ? n[1] : false;
+//   }
 
-  let myVarName123456 = 1;
-  let myVarName2 = 2;
-  console.info(getVarName(myVarName123456)); // myVarName123456
-  console.info(getVarName(myVarName2)); // myVarName123456
-}());
+//   let myVarName123456 = 1;
+//   let myVarName2 = 2;
+//   console.info(getVarName(myVarName123456)); // myVarName123456
+//   console.info(getVarName(myVarName2)); // myVarName123456
+// }());
+const countReconnect = 1;
+const countReconnectCode0 = 2;
+const countErrors = 3;
+
+
+let arrVar = ['countReconnect', 'countReconnectCode0', 'countErrors']
+function consoleGroupLog(arrVar) {
+  let abj = {};
+  arrVar.forEach((item) => {
+    abj[item] = item
+    console.log(`${abj[item]}`, item);
+  })
+  console.log('arrVar=', arrVar);
+  console.log('abj=', abj);;
+}
+consoleGroupLog(arrVar);

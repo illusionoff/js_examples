@@ -1612,18 +1612,20 @@ const arrB = [1.19, 1.19, 1.19, 1.19, 1.19, 1.30, 1.19, 1.19, 1.19, 1.19, 1.19, 
 const countReconnect = 1;
 const countReconnectCode0 = 2;
 const countErrors = 3;
-let arrVar = ['countReconnect', 'countReconnectCode0', 'countErrors']
-function consoleGroupLog(arrVar) { arrVar.forEach((item) => console.log(`${item}`, eval(item))) }
+// let arrVar = ['countReconnect', 'countReconnectCode0', 'countErrors']
+// function consoleGroupLog(arrVar) { arrVar.forEach((item) => console.log(`${item} =`, eval(item))) }
 // consoleGroupLog(arrVar);
 
 // если переменные вставлять в объекты как свойства объекта
 // но тогда добрать до переменной сложнее obj.countReconnect вместо просто countReconnect
-let obj = { countReconnect: 1, countReconnectCode0: 2, countErrors: 3 };
-function consoleGroupLog(arr) {
-  for (let key in obj) console.log(`${key} = `, obj[key])
-  //   arr.forEach((item) => {
-  // console.log(``, )
-}
-
+let obj = { countReconnect, countReconnectCode0, countErrors };
+function consoleGroupLog(obj) { for (let key in obj) console.log(`${key} = `, obj[key]) }
 consoleGroupLog(obj);
 // consoleGroupLogObj([obj.countReconnect, obj.countReconnectCode0]);
+
+
+// удаление пробельных символов для устранения неприятнго эффекта VSCode в шаблонных строках - форматирование пробелов остается в шаблонных строках как  автоформатирует VSCode возможно Eslint
+
+const tetsConsoleLog = `initialBith.takerComissions = ${initialBith.takerComissions}\n
+  initialBith.makerComissions = ${initialBith.makerComissions}\ninitialBith.initialFetchURL= true
+`;

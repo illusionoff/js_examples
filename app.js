@@ -1624,8 +1624,14 @@ consoleGroupLog(obj);
 // consoleGroupLogObj([obj.countReconnect, obj.countReconnectCode0]);
 
 
-// удаление пробельных символов для устранения неприятнго эффекта VSCode в шаблонных строках - форматирование пробелов остается в шаблонных строках как  автоформатирует VSCode возможно Eslint
+// удаление пробельных символов для устранения неприятнго эффекта VSCode в шаблонных строках - форматирование пробелов остается в шаблонных строках когда  автоформатирует VSCode возможно, Eslint
 
-const tetsConsoleLog = `initialBith.takerComissions = ${initialBith.takerComissions}\n
-  initialBith.makerComissions = ${initialBith.makerComissions}\ninitialBith.initialFetchURL= true
+const tetsConsoleLog = `initialBith.takerComissions =
+          initialBith.makerComissions =
+          initialBith.initialFetchURL= true
 `;
+function consoleLogGroup(str) {
+  console.log(str.split('\n').map((item) => item.trim()).join('\n'));
+}
+console.log('console.log = ', tetsConsoleLog);
+consoleLogGroup(tetsConsoleLog);

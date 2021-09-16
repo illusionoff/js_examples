@@ -1809,13 +1809,13 @@ consoleLogGroup(tetsConsoleLog);
 
 
 function consoleLogGroup(strings, ...expressions) {
-  function trimMy(str) { console.log(str.split('\n').map((item) => item.trim()).join('\n')) }
+  function trimMy(str) { return str.split('\n').map((item) => item.trim()).join('\n') }
   const equals = strings.length != expressions.length ? true : false;
   // console.log(strings[strings.length - 1].split('\n').map((item) => item.trim()).join('\n'));
 
   expressions.forEach((value, i) => {
     if (equals && i === expressions.length - 1) {
-      console.log(trimMy(strings[i]), value, trimMy([strings.length - 1]));
+      console.log(trimMy(strings[i]), value, trimMy(strings[strings.length - 1]));
       console.log('TEST')
     }
     else console.log(trimMy(strings[i]), value); // Добавляем последний строковой литерал

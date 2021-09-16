@@ -1626,6 +1626,176 @@ consoleGroupLog(obj);
 
 // удаление пробельных символов для устранения неприятнго эффекта VSCode в шаблонных строках - форматирование пробелов остается в шаблонных строках когда  автоформатирует VSCode возможно, Eslint
 
+// const tetsConsoleLog = `initialBith.takerComissions =
+//           initialBith.makerComissions =
+//           initialBith.initialFetchURL= true
+// `;
+// function consoleLogGroup(str) {
+//   console.log(str.split('\n').map((item) => item.trim()).join('\n'));
+// }
+// console.log('console.log = ', tetsConsoleLog);
+// consoleLogGroup(tetsConsoleLog);
+
+
+var person = 'Mike';
+var age = 28;
+
+function myTag(strings, personExp, ageExp) {
+  var str0 = strings[0]; // "That "
+  var str1 = strings[1]; // " is a "
+
+  // Технически, в конце итогового выражения
+  // (в нашем примере) есть ещё одна строка,
+  // но она пустая (""), так что пропустим её.
+  // var str2 = strings[2];
+
+  var ageStr;
+  if (ageExp > 99) {
+    ageStr = 'centenarian';
+  } else {
+    ageStr = 'youngster';
+  }
+
+  // Мы даже можем вернуть строку, построенную другим шаблонным литералом
+  return `${str0}${personExp}${str1}${ageStr}`;
+}
+
+var output = myTag`That ${person} is a ${age}`;
+
+console.log(output);
+// That Mike is a youngster
+
+// функция тест тегового шаблона расширения шаблонной строки
+
+// // function testTag(strings, ...keys) {
+// function testTag(...values) {
+
+//   // console.log('strings[0]=', strings[0]);
+//   // console.log('strings[1]=', strings[1]);
+//   // console.log('strings[2]=', strings[2]);
+//   // keys.forEach((key, index) => {
+//   //   console.log(`key[${index}]=`, key);
+//   // })
+//   // values.forEach((key, index) => {
+//   //   console.log(key);
+//   // })
+//   console.log(values);
+// }
+initialGate = {
+  messageObj:
+  {
+    time: 1631785575,
+    channel: 'spot.order_book',
+    event: 'update',
+    result: {
+      t: 1631785575531,
+      lastUpdateId: 2088519752,
+      s: 'XRP_USDT',
+      bids: [
+        [Array], [Array],
+        [Array], [Array],
+        [Array], [Array],
+        [Array], [Array],
+        [Array], [Array]
+      ],
+      asks: [
+        [Array], [Array],
+        [Array], [Array],
+        [Array], [Array],
+        [Array], [Array],
+        [Array], [Array]
+      ]
+    }
+  }
+}
+// //// const strMessageGate = `onmessage Gate
+// ////     initialGate.messageObj.time = ${initialGate.messageObj.time}
+// ////     initialGate.messageObj = ${initialGate.messageObj}`;
+// testTag`onmessage Gate
+// initialGate.messageObj.time = ${initialGate.messageObj.time}
+// initialGate.messageObj = ${initialGate.messageObj}`
+
+// function bold(strings, ...expressions) {
+//   let finalString = ''
+
+//   // Проходимся по всем выражениям
+//   expressions.forEach((value, i) => {
+//     finalString += `${strings[i]}<strong>${value}</strong>`
+//   })
+
+//   // Добавляем последний строковой литерал
+//   finalString += strings[strings.length - 1]
+
+//   return finalString
+// }
+
+// const string = bold`This is a string with ${true} and ${false} and ${100} interpolated inside.`
+
+// console.log(string)
+
+
+// function testTag(strings, ...expressions) {
+//   let finalString = ''
+//   strings.forEach((string) => {
+//     console.log(string)
+//   })
+//   console.log('array strings=', strings);
+//   console.log('expressions.length=', expressions.length);
+//   // Проходимся по всем выражениям
+//   console.log('*************************');
+//   const equals = strings.length === expressions.length ? true : false;
+//   expressions.forEach((value, i) => {
+//     if (equals) {
+//       console.log(strings[i], value);
+//     } else {
+//       console.log(strings[i], value, strings[strings.length - 1]); // Добавляем последний строковой литерал
+//     }
+//   })
+// }
+
+// function testTag(strings, ...expressions) {
+//   const equals = strings.length != expressions.length ? true : false;
+//   expressions.forEach((value, i) => {
+//     if (equals) console.log(strings[i], value)
+//     else console.log(strings[i], value, strings[strings.length - 1]); // Добавляем последний строковой литерал
+//   })
+// }
+
+
+
+// testTag`wewqeqw${initialGate.messageObj.time}${initialGate.messageObj.time}onmessage Gate
+// initialGate.messageObj.time = ${initialGate.messageObj.time}
+// initialGate.messageObj = ${initialGate.messageObj}
+// initialGate.messageObj.result = ${initialGate.messageObj.result}ewewewe`
+
+
+// тест инкапсуляции тегового шаблона- функции не работает и нашел ответ
+// https://coderoad.ru/58316788/%D0%9A%D0%B0%D0%BA-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D0%BB-%D0%B2-es6-%D0%B4%D0%BB%D1%8F-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%D0%BE%D0%B9-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9
+// console.log('___________________________________');
+// function tags(str) {
+//   function tag(strings, ...expressions) {
+//     console.log('strings=', strings);
+//     console.log('expressions=', expressions);
+//   }
+
+//   tag`${str}`
+// }
+
+// const strMessageGate = `onmessage Gate
+// initialGate.messageObj.time = ${initialGate.messageObj.time}
+// initialGate.messageObj = ${initialGate.messageObj}`;
+
+// // console.log('strMessageGate=', tags(strMessageGate));
+// tags(strMessageGate)
+
+// arr.forEach можно игнорировать определенные элементы в массиве
+// let arr = [1, 2, 3, 4, 5];
+
+// arr.forEach((item) => {
+//   if (item === 3) return
+//   console.log(item);
+// })
+
 const tetsConsoleLog = `initialBith.takerComissions =
           initialBith.makerComissions =
           initialBith.initialFetchURL= true
@@ -1635,3 +1805,29 @@ function consoleLogGroup(str) {
 }
 console.log('console.log = ', tetsConsoleLog);
 consoleLogGroup(tetsConsoleLog);
+
+
+
+function consoleLogGroup(strings, ...expressions) {
+  function trimMy(str) { console.log(str.split('\n').map((item) => item.trim()).join('\n')) }
+  const equals = strings.length != expressions.length ? true : false;
+  // console.log(strings[strings.length - 1].split('\n').map((item) => item.trim()).join('\n'));
+
+  expressions.forEach((value, i) => {
+    if (equals && i === expressions.length - 1) {
+      console.log(trimMy(strings[i]), value, trimMy([strings.length - 1]));
+      console.log('TEST')
+    }
+    else console.log(trimMy(strings[i]), value); // Добавляем последний строковой литерал
+  })
+}
+
+
+console.log('_______________________________');
+consoleLogGroup`wewqeqw
+          qwqwqwqw
+          ${initialGate.messageObj.time}${initialGate.messageObj.time}onmessage Gate
+          initialGate.messageObj.time = ${initialGate.messageObj.time}
+          initialGate.messageObj = ${initialGate.messageObj}
+          initialGate.messageObj.result =
+          ewewewe`

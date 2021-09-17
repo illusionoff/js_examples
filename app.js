@@ -1796,46 +1796,38 @@ initialGate = {
 //   console.log(item);
 // })
 
-const tetsConsoleLog = `wewqeqw
-          qwqwqwqw
-          ${initialGate.messageObj.time}${initialGate.messageObj.time}onmessage Gate
-          initialGate.messageObj.time = ${initialGate.messageObj.time}
-          initialGate.messageObj = ${initialGate.messageObj}
-          initialGate.messageObj.result =
-          ewewewe`;
+const tetsConsoleLog = `initialBith.takerComissions =
+          initialBith.makerComissions =
+          initialBith.initialFetchURL= true
+`;
+// function consoleLogGroup(str) {
+//   console.log(str.split('\n').map((item) => item.trim()).join('\n'));
+// }
+// console.log('console.log = ', tetsConsoleLog);
+// consoleLogGroup(tetsConsoleLog);
+
+
 
 function consoleLogGroup(strings, ...expressions) {
-  console.log('strings', strings);
-  // console.log('expressions', expressions);
-  console.log('strings.length', strings.length);
-  console.log('expressions.length', expressions.length);
-  function trimMy(str) {
-    return str.split('\n').map((item) => item.trim()).join('\n') //.replace(/\r?\n/g, "")
-  }
-
+  console.log(strings);
+  function trimMy(str) { return str.split('\n').map((item) => item.trim()).join('\n') }
   // const equals = strings.length != expressions.length ? true : false;
+  // console.log(strings[strings.length - 1].split('\n').map((item) => item.trim()).join('\n'));
 
   expressions.forEach((value, i) => {
-    if (i === expressions.length - 1) console.log(trimMy(strings[i]), value, trimMy(strings[strings.length - 1]))
+    if (i === expressions.length - 1) {
+      console.log(trimMy(strings[i]), value, trimMy(strings[strings.length - 1]));
+      console.log('TEST')
+    }
     else console.log(trimMy(strings[i]), value); // Добавляем последний строковой литерал
   })
 }
 
 
 console.log('_______________________________');
-// consoleLogGroup`wewqeqw
-//           qwqwqwqw
-//           ${initialGate.messageObj.time}${initialGate.messageObj.time}onmessage Gate
-//           initialGate.messageObj.time = ${initialGate.messageObj.time}
-//           initialGate.messageObj = ${initialGate.messageObj}
-//           initialGate.messageObj.result =
-//           ewewewe`;
-
-let obj2 = { countReconnect: 1, countErrors: 2 };
-const TIME_STOP_TEST = 10;
-
-consoleLogGroup`wqwqwqwq
-       countReconnect = ${obj2.countReconnect}
-       countErrors = ${obj2.countErrors}
-       |Time OUT sec stop = ${TIME_STOP_TEST}
-       vcxvxcvxcv`;
+consoleLogGroup`TEST_ORDERBOOB10
+        ${initialGate.messageObj.time}onmessage Gate
+        initialGate.messageObj.time = ${initialGate.messageObj.time}
+        initialGate.messageObj = ${initialGate.messageObj}
+        initialGate.messageObj.result =${initialGate.messageObj.time}
+        |Time OUT 5 min test`;

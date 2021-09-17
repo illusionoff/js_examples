@@ -1609,18 +1609,18 @@ const arrB = [1.19, 1.19, 1.19, 1.19, 1.19, 1.30, 1.19, 1.19, 1.19, 1.19, 1.19, 
 // }());
 
 // Работает такой вариант
-const countReconnect = 1;
-const countReconnectCode0 = 2;
-const countErrors = 3;
-// let arrVar = ['countReconnect', 'countReconnectCode0', 'countErrors']
-// function consoleGroupLog(arrVar) { arrVar.forEach((item) => console.log(`${item} =`, eval(item))) }
-// consoleGroupLog(arrVar);
+// const countReconnect = 1;
+// const countReconnectCode0 = 2;
+// const countErrors = 3;
+// // let arrVar = ['countReconnect', 'countReconnectCode0', 'countErrors']
+// // function consoleGroupLog(arrVar) { arrVar.forEach((item) => console.log(`${item} =`, eval(item))) }
+// // consoleGroupLog(arrVar);
 
-// если переменные вставлять в объекты как свойства объекта
-// но тогда добрать до переменной сложнее obj.countReconnect вместо просто countReconnect
-let obj = { countReconnect, countReconnectCode0, countErrors };
-function consoleGroupLog(obj) { for (let key in obj) console.log(`${key} = `, obj[key]) }
-consoleGroupLog(obj);
+// // если переменные вставлять в объекты как свойства объекта
+// // но тогда добрать до переменной сложнее obj.countReconnect вместо просто countReconnect
+// let obj = { countReconnect, countReconnectCode0, countErrors };
+// function consoleGroupLog(obj) { for (let key in obj) console.log(`${key} = `, obj[key]) }
+// consoleGroupLog(obj);
 // consoleGroupLogObj([obj.countReconnect, obj.countReconnectCode0]);
 
 
@@ -1831,3 +1831,25 @@ consoleLogGroup`TEST_ORDERBOOB10
         initialGate.messageObj = ${initialGate.messageObj}
         initialGate.messageObj.result =${initialGate.messageObj.time}
         |Time OUT 5 min test`;
+// console.log(`TEST_ORDERBOOB10
+//         ${initialGate.messageObj.time}onmessage Gate
+//         initialGate.messageObj.time = ${initialGate.messageObj.time}
+//         initialGate.messageObj = ${initialGate.messageObj}
+//         initialGate.messageObj.result =${initialGate.messageObj.time}
+//         |Time OUT 5 min test`);
+// console.log('TEST_ORDERBOOB10')
+// console.log(initialGate.messageObj.time, 'onmessage Gate');
+// console.log(initialGate.messageObj.time, initialGate.messageObj.time);
+// console.log(initialGate.messageObj, initialGate.messageObj);
+// console.log(initialGate.messageObj.result, initialGate.messageObj.time);
+// console.log('| Time OUT 5 min test');
+
+const countReconnect = 1;
+const countReconnectCode0 = 2;
+const countErrors = 3;
+const TIME_STOP_TEST = 50;
+let obj = { countReconnect, countReconnectCode0, countErrors };
+
+consoleLogGroup`countReconnect = ${obj.countReconnect}
+        countErrors = ${obj.countErrors}
+        |Time OUT sec stop = ${TIME_STOP_TEST}`

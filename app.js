@@ -1824,30 +1824,30 @@ const tetsConsoleLog = `initialBith.takerComissions =
 
 var util = require('util');
 
-function consoleLogGroup(strings, ...expressions) {
-  let strOut = '';
-  console.log(strings);
-  function trimMy(str) { return str.split('\n').map((item) => item.trim()).join('\n') }
-  // const equals = strings.length != expressions.length ? true : false;
-  // console.log(strings[strings.length - 1].split('\n').map((item) => item.trim()).join('\n'));
-  console.log('^^^^^^^^^^^^^^^^^^^^^^');
-  expressions.forEach((value, i) => {
-    if (i === expressions.length - 1) {
-      // strOut += util.format(trimMy(strings[i]), value, trimMy(strings[strings.length - 1]));
-      // console.log('TEST')
-    }
-    else strOut += util.format((trimMy(strings[i]), value)); // Добавляем последний строковой литерал
-  })
-  console.log(strOut);
-}
+// function consoleLogGroup(strings, ...expressions) {
+//   let strOut = '';
+//   console.log(strings);
+//   function trimMy(str) { return str.split('\n').map((item) => item.trim()).join('\n') }
+//   // const equals = strings.length != expressions.length ? true : false;
+//   // console.log(strings[strings.length - 1].split('\n').map((item) => item.trim()).join('\n'));
+//   console.log('^^^^^^^^^^^^^^^^^^^^^^');
+//   expressions.forEach((value, i) => {
+//     if (i === expressions.length - 1) {
+//       // strOut += util.format(trimMy(strings[i]), value, trimMy(strings[strings.length - 1]));
+//       // console.log('TEST')
+//     }
+//     else strOut += util.format((trimMy(strings[i]), value)); // Добавляем последний строковой литерал
+//   })
+//   console.log(strOut);
+// }
 
 console.log('_______________________________');
-consoleLogGroup`TEST_ORDERBOOB10
-        ${initialGate.messageObj.time}onmessage Gate
-        initialGate.messageObj.time = ${initialGate.messageObj.time}
-        initialGate.messageObj = ${initialGate.messageObj}
-        initialGate.messageObj.result =${initialGate.messageObj.time}
-        |Time OUT 5 min test`;
+// consoleLogGroup`TEST_ORDERBOOB10
+//         ${initialGate.messageObj.time}onmessage Gate
+//         initialGate.messageObj.time = ${initialGate.messageObj.time}
+//         initialGate.messageObj = ${initialGate.messageObj}
+//         initialGate.messageObj.result =${initialGate.messageObj.time}
+//         |Time OUT 5 min test`;
 
 // console.log(`TEST_ORDERBOOB10
 //         ${initialGate.messageObj.time}onmessage Gate
@@ -1884,3 +1884,45 @@ let obj = { countReconnect, countReconnectCode0, countErrors };
 // // obj3.self = obj3;
 
 // console.log(util.inspect(obj3));
+
+
+consoleLog = function (msg) {
+  process.stdout.write(`${msg}\n`);
+};
+
+// consoleLog(`TEST_ORDERBOOB10
+//   ${initialGate.messageObj.time}onmessage Gate
+//   initialGate.messageObj.time = ${initialGate.messageObj.time}
+//   initialGate.messageObj = ${initialGate.messageObj}
+//   initialGate.messageObj.result =${initialGate.messageObj.time}
+//   |Time OUT 5 min test`);
+
+function consoleLogGroup2(strings, ...expressions) {
+  let strOut = '';
+  console.log(strings);
+  function trimMy(str) { return str.split('\n').map((item) => item.trim()).join('\n') }
+  // const equals = strings.length != expressions.length ? true : false;
+  // console.log(strings[strings.length - 1].split('\n').map((item) => item.trim()).join('\n'));
+  console.log('^^^^^^^^^^^^^^^^^^^^^^');
+  expressions.forEach((value, i) => {
+    // if (i === expressions.length - 1) {
+    //   // strOut += util.format(trimMy(strings[i]), value, trimMy(strings[strings.length - 1]));
+    //   // console.log('TEST')
+    // }
+    // else
+    strOut += trimMy(strings[i]) + process.stdout.write(value); // Добавляем последний строковой литерал
+    // console.log(value);
+  })
+  // console.log(strOut);
+}
+
+
+// consoleLogGroup2`TEST_ORDERBOOB10
+//   ${ initialGate.messageObj.time}onmessage Gate
+//   initialGate.messageObj.time = ${ initialGate.messageObj.time}
+//   initialGate.messageObj = ${ initialGate.messageObj}
+//   initialGate.messageObj.result = ${ initialGate.messageObj.time}
+//     | Time OUT 5 min test2`;
+console.log(initialGate.messageObj);
+// consoleLog(initialGate.messageObj);
+process.stdout.write(initialGate.messageObj);

@@ -1898,31 +1898,60 @@ consoleLog = function (msg) {
 //   |Time OUT 5 min test`);
 
 function consoleLogGroup2(strings, ...expressions) {
+  const inspectOptions = { showHidden: false, colors: true, depth: null }// depth: null глубокий вывод. compact: true минимизация количества строк
   let strOut = '';
-  console.log(strings);
-  function trimMy(str) { return str.split('\n').map((item) => item.trim()).join('\n') }
-  // const equals = strings.length != expressions.length ? true : false;
-  // console.log(strings[strings.length - 1].split('\n').map((item) => item.trim()).join('\n'));
-  console.log('^^^^^^^^^^^^^^^^^^^^^^');
+  function trim(str) { return str.split('\n').map((item) => item.trim()).join('\n') }//удаляем лишние пробелы для устранения эффекта форматирования шаблонных строк VSCode.
   expressions.forEach((value, i) => {
-    // if (i === expressions.length - 1) {
-    //   // strOut += util.format(trimMy(strings[i]), value, trimMy(strings[strings.length - 1]));
-    //   // console.log('TEST')
-    // }
-    // else
-    strOut += trimMy(strings[i]) + process.stdout.write(value); // Добавляем последний строковой литерал
-    // console.log(value);
+    if (i === expressions.length - 1) {
+      strOut += ' ' + trim(strings[i] +
+        util.formatWithOptions(inspectOptions, value) + ' ' +
+        trim(strings[strings.length - 1]))
+    }// Добавляем последний строковой литерал
+    else strOut += ' ' + trim(strings[i]) + ' ' + util.formatWithOptions(inspectOptions, value);
   })
-  // console.log(strOut);
+  // console.log(util.formatWithOptions({ showHidden: false, colors: true }, expressions[3]));// depth: null глубокий вывод
+  // console.log(util.inspect(expressions[3], { showHidden: false, colors: true }))// depth: null глубокий вывод объектов и цветом
+  console.log(strOut);
 }
 
+function consoleLogGroup3(strings, ...expressions) {
+  const inspectOptions = { showHidden: false, colors: true }// depth: null глубокий вывод
+  let strOut = '';
+  function trim(str) { return str.split('\n').map((item) => item.trim()).join('\n') }//удаляем лишние пробелы для устранения эффекта форматирования шаблонных строк VSCode.
+  expressions.forEach((value, i) => {
+    if (i === expressions.length - 1) {
+      strOut += ' ' + trim(strings[i] +
+        util.formatWithOptions(inspectOptions, value) + ' ' +
+        trim(strings[strings.length - 1]))
+    }// Добавляем последний строковой литерал
+    else strOut += ' ' + trim(strings[i]) + ' ' + util.formatWithOptions(inspectOptions, value);
+  })
+  // console.log(util.formatWithOptions({ showHidden: false, colors: true }, expressions[3]));// depth: null глубокий вывод
+  // console.log(util.inspect(expressions[3], { showHidden: false, colors: true }))// depth: null глубокий вывод объектов и цветом
+  console.log(strOut);
+  console.log('-------------------------');
 
-// consoleLogGroup2`TEST_ORDERBOOB10
-//   ${ initialGate.messageObj.time}onmessage Gate
-//   initialGate.messageObj.time = ${ initialGate.messageObj.time}
-//   initialGate.messageObj = ${ initialGate.messageObj}
-//   initialGate.messageObj.result = ${ initialGate.messageObj.time}
-//     | Time OUT 5 min test2`;
-console.log(initialGate.messageObj);
-// consoleLog(initialGate.messageObj);
-process.stdout.write(initialGate.messageObj);
+  // console.log(JSON.stringify(expressions[3], null, 4));
+  console.log('connection : %j', expressions[3]);
+}
+
+consoleLogGroup2`TEST_ORDERBOOB10
+        ${initialGate.messageObj.time} ' onmessage Gate
+        ${ initialGate.messageObj.time}initialGate.messageObj.time = ${initialGate.messageObj.time}
+        initialGate.messageObj = ${ initialGate.messageObj}
+        initialGate.messageObj.result = ${ initialGate.messageObj.time}
+        | Time OUT 5 min test2`;
+// consoleLogGroup3`TEST_ORDERBOOB10
+//         ${eval(initialGate.messageObj.time)} ' onmessage Gate
+//         ${ eval(initialGate.messageObj.time)}initialGate.messageObj.time = ${eval(initialGate.messageObj.time)}
+//         initialGate.messageObj = ${ eval(initialGate.messageObj)}
+//         initialGate.messageObj.result = ${ eval(initialGate.messageObj.time)}
+//         | Time OUT 5 min test2`;
+// function templateSrt(object) {
+//   process.stdout.write(util.inspect(object) + '\n');
+// }
+
+// templateSrt(initialGate.messageObj);
+// console.log('console.log:', util.formatWithOptions({ showHidden: true, colors: true, depth: null }, console));
+// console.log('console.log:', util.formatWithOptions({ showHidden: true, colors: true, depth: null }, console));
+console.dir(console.log, { showHidden: true, depth: null });

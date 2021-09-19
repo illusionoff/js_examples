@@ -1954,4 +1954,5 @@ consoleLogGroup2`TEST_ORDERBOOB10
 // templateSrt(initialGate.messageObj);
 // console.log('console.log:', util.formatWithOptions({ showHidden: true, colors: true, depth: null }, console));
 // console.log('console.log:', util.formatWithOptions({ showHidden: true, colors: true, depth: null }, console));
-console.dir(console.log, { showHidden: true, depth: null });
+console.dir(console.log, { showHidden: true, depth: null }); 
+// test Github editing

@@ -1395,16 +1395,16 @@
 
 
 //  #38 reverse() реверс - на месте обращает порядок следования элементов массива. Первый элемент массива становится последним, а последний — первым.
-const array1 = ['one', 'two', 'three'];
-console.log('array1:', array1);
-// expected output: "array1:" Array ["one", "two", "three"]
+// const array1 = ['one', 'two', 'three'];
+// console.log('array1:', array1);
+// // expected output: "array1:" Array ["one", "two", "three"]
 
-const reversed = array1.reverse();
-console.log('reversed:', reversed);
-// expected output: "reversed:" Array ["three", "two", "one"]
+// const reversed = array1.reverse();
+// console.log('reversed:', reversed);
+// // expected output: "reversed:" Array ["three", "two", "one"]
 
-// Careful: reverse is destructive -- it changes the original array.
-console.log('array1:', array1);
+// // Careful: reverse is destructive -- it changes the original array.
+// console.log('array1:', array1);
 // expected output: "array1:" Array ["three", "two", "one"]
 
 
@@ -1637,32 +1637,32 @@ const arrB = [1.19, 1.19, 1.19, 1.19, 1.19, 1.30, 1.19, 1.19, 1.19, 1.19, 1.19, 
 // consoleLogGroup(tetsConsoleLog);
 
 
-var person = 'Mike';
-var age = 28;
+// var person = 'Mike';
+// var age = 28;
 
-function myTag(strings, personExp, ageExp) {
-  var str0 = strings[0]; // "That "
-  var str1 = strings[1]; // " is a "
+// function myTag(strings, personExp, ageExp) {
+//   var str0 = strings[0]; // "That "
+//   var str1 = strings[1]; // " is a "
 
-  // Технически, в конце итогового выражения
-  // (в нашем примере) есть ещё одна строка,
-  // но она пустая (""), так что пропустим её.
-  // var str2 = strings[2];
+//   // Технически, в конце итогового выражения
+//   // (в нашем примере) есть ещё одна строка,
+//   // но она пустая (""), так что пропустим её.
+//   // var str2 = strings[2];
 
-  var ageStr;
-  if (ageExp > 99) {
-    ageStr = 'centenarian';
-  } else {
-    ageStr = 'youngster';
-  }
+//   var ageStr;
+//   if (ageExp > 99) {
+//     ageStr = 'centenarian';
+//   } else {
+//     ageStr = 'youngster';
+//   }
 
-  // Мы даже можем вернуть строку, построенную другим шаблонным литералом
-  return `${str0}${personExp}${str1}${ageStr}`;
-}
+//   // Мы даже можем вернуть строку, построенную другим шаблонным литералом
+//   return `${str0}${personExp}${str1}${ageStr}`;
+// }
 
-var output = myTag`That ${person} is a ${age}`;
+// var output = myTag`That ${person} is a ${age}`;
 
-console.log(output);
+// console.log(output);
 // That Mike is a youngster
 
 // функция тест тегового шаблона расширения шаблонной строки
@@ -1681,33 +1681,33 @@ console.log(output);
 //   // })
 //   console.log(values);
 // }
-initialGate = {
-  messageObj:
-  {
-    time: 1631785575,
-    channel: 'spot.order_book',
-    event: 'update',
-    result: {
-      t: 1631785575531,
-      lastUpdateId: 2088519752,
-      s: 'XRP_USDT',
-      bids: [
-        [Array], [Array],
-        [Array], [Array],
-        [Array], [Array],
-        [Array], [Array],
-        [Array], [Array]
-      ],
-      asks: [
-        [Array], [Array],
-        [Array], [Array],
-        [Array], [Array],
-        [Array], [Array],
-        [Array], [Array]
-      ]
-    }
-  }
-}
+// initialGate = {
+//   messageObj:
+//   {
+//     time: 1631785575,
+//     channel: 'spot.order_book',
+//     event: 'update',
+//     result: {
+//       t: 1631785575531,
+//       lastUpdateId: 2088519752,
+//       s: 'XRP_USDT',
+//       bids: [
+//         [Array], [Array],
+//         [Array], [Array],
+//         [Array], [Array],
+//         [Array], [Array],
+//         [Array], [Array]
+//       ],
+//       asks: [
+//         [Array], [Array],
+//         [Array], [Array],
+//         [Array], [Array],
+//         [Array], [Array],
+//         [Array], [Array]
+//       ]
+//     }
+//   }
+// }
 // //// const strMessageGate = `onmessage Gate
 // ////     initialGate.messageObj.time = ${initialGate.messageObj.time}
 // ////     initialGate.messageObj = ${initialGate.messageObj}`;
@@ -1841,7 +1841,7 @@ var util = require('util');
 //   console.log(strOut);
 // }
 
-console.log('_______________________________');
+// console.log('_______________________________');
 // consoleLogGroup`TEST_ORDERBOOB10
 //         ${initialGate.messageObj.time}onmessage Gate
 //         initialGate.messageObj.time = ${initialGate.messageObj.time}
@@ -1862,11 +1862,11 @@ console.log('_______________________________');
 // console.log(initialGate.messageObj.result, initialGate.messageObj.time);
 // console.log('| Time OUT 5 min test');
 
-const countReconnect = 1;
-const countReconnectCode0 = 2;
-const countErrors = 3;
-const TIME_STOP_TEST = 50;
-let obj = { countReconnect, countReconnectCode0, countErrors };
+// const countReconnect = 1;
+// const countReconnectCode0 = 2;
+// const countErrors = 3;
+// const TIME_STOP_TEST = 50;
+// let obj = { countReconnect, countReconnectCode0, countErrors };
 
 // consoleLogGroup`countReconnect = ${obj.countReconnect}
 //         countErrors = ${obj.countErrors}
@@ -1886,9 +1886,9 @@ let obj = { countReconnect, countReconnectCode0, countErrors };
 // console.log(util.inspect(obj3));
 
 
-consoleLog = function (msg) {
-  process.stdout.write(`${msg}\n`);
-};
+// consoleLog = function (msg) {
+//   process.stdout.write(`${msg}\n`);
+// };
 
 // consoleLog(`TEST_ORDERBOOB10
 //   ${initialGate.messageObj.time}onmessage Gate
@@ -1897,50 +1897,50 @@ consoleLog = function (msg) {
 //   initialGate.messageObj.result =${initialGate.messageObj.time}
 //   |Time OUT 5 min test`);
 
-function consoleLogGroup2(strings, ...expressions) {
-  const inspectOptions = { showHidden: false, colors: true, depth: null }// depth: null глубокий вывод. compact: true минимизация количества строк
-  let strOut = '';
-  function trim(str) { return str.split('\n').map((item) => item.trim()).join('\n') }//удаляем лишние пробелы для устранения эффекта форматирования шаблонных строк VSCode.
-  expressions.forEach((value, i) => {
-    if (i === expressions.length - 1) {
-      strOut += ' ' + trim(strings[i] +
-        util.formatWithOptions(inspectOptions, value) + ' ' +
-        trim(strings[strings.length - 1]))
-    }// Добавляем последний строковой литерал
-    else strOut += ' ' + trim(strings[i]) + ' ' + util.formatWithOptions(inspectOptions, value);
-  })
-  // console.log(util.formatWithOptions({ showHidden: false, colors: true }, expressions[3]));// depth: null глубокий вывод
-  // console.log(util.inspect(expressions[3], { showHidden: false, colors: true }))// depth: null глубокий вывод объектов и цветом
-  console.log(strOut);
-}
+// function consoleLogGroup2(strings, ...expressions) {
+//   const inspectOptions = { showHidden: false, colors: true, depth: null }// depth: null глубокий вывод. compact: true минимизация количества строк
+//   let strOut = '';
+//   function trim(str) { return str.split('\n').map((item) => item.trim()).join('\n') }//удаляем лишние пробелы для устранения эффекта форматирования шаблонных строк VSCode.
+//   expressions.forEach((value, i) => {
+//     if (i === expressions.length - 1) {
+//       strOut += ' ' + trim(strings[i] +
+//         util.formatWithOptions(inspectOptions, value) + ' ' +
+//         trim(strings[strings.length - 1]))
+//     }// Добавляем последний строковой литерал
+//     else strOut += ' ' + trim(strings[i]) + ' ' + util.formatWithOptions(inspectOptions, value);
+//   })
+//   // console.log(util.formatWithOptions({ showHidden: false, colors: true }, expressions[3]));// depth: null глубокий вывод
+//   // console.log(util.inspect(expressions[3], { showHidden: false, colors: true }))// depth: null глубокий вывод объектов и цветом
+//   console.log(strOut);
+// }
 
-function consoleLogGroup3(strings, ...expressions) {
-  const inspectOptions = { showHidden: false, colors: true }// depth: null глубокий вывод
-  let strOut = '';
-  function trim(str) { return str.split('\n').map((item) => item.trim()).join('\n') }//удаляем лишние пробелы для устранения эффекта форматирования шаблонных строк VSCode.
-  expressions.forEach((value, i) => {
-    if (i === expressions.length - 1) {
-      strOut += ' ' + trim(strings[i] +
-        util.formatWithOptions(inspectOptions, value) + ' ' +
-        trim(strings[strings.length - 1]))
-    }// Добавляем последний строковой литерал
-    else strOut += ' ' + trim(strings[i]) + ' ' + util.formatWithOptions(inspectOptions, value);
-  })
-  // console.log(util.formatWithOptions({ showHidden: false, colors: true }, expressions[3]));// depth: null глубокий вывод
-  // console.log(util.inspect(expressions[3], { showHidden: false, colors: true }))// depth: null глубокий вывод объектов и цветом
-  console.log(strOut);
-  console.log('-------------------------');
+// function consoleLogGroup3(strings, ...expressions) {
+//   const inspectOptions = { showHidden: false, colors: true }// depth: null глубокий вывод
+//   let strOut = '';
+//   function trim(str) { return str.split('\n').map((item) => item.trim()).join('\n') }//удаляем лишние пробелы для устранения эффекта форматирования шаблонных строк VSCode.
+//   expressions.forEach((value, i) => {
+//     if (i === expressions.length - 1) {
+//       strOut += ' ' + trim(strings[i] +
+//         util.formatWithOptions(inspectOptions, value) + ' ' +
+//         trim(strings[strings.length - 1]))
+//     }// Добавляем последний строковой литерал
+//     else strOut += ' ' + trim(strings[i]) + ' ' + util.formatWithOptions(inspectOptions, value);
+//   })
+//   // console.log(util.formatWithOptions({ showHidden: false, colors: true }, expressions[3]));// depth: null глубокий вывод
+//   // console.log(util.inspect(expressions[3], { showHidden: false, colors: true }))// depth: null глубокий вывод объектов и цветом
+//   console.log(strOut);
+//   console.log('-------------------------');
 
-  // console.log(JSON.stringify(expressions[3], null, 4));
-  console.log('connection : %j', expressions[3]);
-}
+//   // console.log(JSON.stringify(expressions[3], null, 4));
+//   console.log('connection : %j', expressions[3]);
+// }
 
-consoleLogGroup2`TEST_ORDERBOOB10
-        ${initialGate.messageObj.time} ' onmessage Gate
-        ${ initialGate.messageObj.time}initialGate.messageObj.time = ${initialGate.messageObj.time}
-        initialGate.messageObj = ${ initialGate.messageObj}
-        initialGate.messageObj.result = ${ initialGate.messageObj.time}
-        | Time OUT 5 min test2`;
+// consoleLogGroup2`TEST_ORDERBOOB10
+//         ${initialGate.messageObj.time} ' onmessage Gate
+//         ${ initialGate.messageObj.time}initialGate.messageObj.time = ${initialGate.messageObj.time}
+//         initialGate.messageObj = ${ initialGate.messageObj}
+//         initialGate.messageObj.result = ${ initialGate.messageObj.time}
+//         | Time OUT 5 min test2`;
 // consoleLogGroup3`TEST_ORDERBOOB10
 //         ${eval(initialGate.messageObj.time)} ' onmessage Gate
 //         ${ eval(initialGate.messageObj.time)}initialGate.messageObj.time = ${eval(initialGate.messageObj.time)}
@@ -1954,5 +1954,54 @@ consoleLogGroup2`TEST_ORDERBOOB10
 // templateSrt(initialGate.messageObj);
 // console.log('console.log:', util.formatWithOptions({ showHidden: true, colors: true, depth: null }, console));
 // console.log('console.log:', util.formatWithOptions({ showHidden: true, colors: true, depth: null }, console));
-console.dir(console.log, { showHidden: true, depth: null }); 
+// console.dir(console.log, { showHidden: true, depth: null });
 // test Github editing
+
+//closure more function exit in one function closure
+
+let timerPingClosure = function () {
+  let ping;
+  function startPing(time) {
+    stopPing()
+    ping = setInterval(function () {
+      // ws.send(JSON.stringify({ "cmd": "ping" }));
+      let timeNaw = new Date().getTime();
+      console.log('time ping bith start ======================================', timeNaw);
+    }, time);
+  }
+
+  function stopPing() {
+    clearInterval(ping);
+    let timeNaw = new Date().getTime();
+    // console.log('stopPing');
+    // console.log('time pong bith stop ======================================', timeNaw);
+  }
+
+  return {
+    startping: startPing,
+    stopping: stopPing
+  }
+};
+
+let timerPingOne = timerPingClosure();
+// let timerPingTwo = timerPingClosure();
+// timerPingOne.startping();
+// timerPingOne.startping();
+// // timerPingTwo.startping();
+// timerPingOne.stopping();
+// timerPingTwo.stopping();
+
+setTimeout(() => {
+  console.log('Start  NewsetTimeout');
+  timerPingOne.startping(1000);
+}, 5000);
+
+setTimeout(() => {
+  console.log('Start  NewsetTimeout');
+  timerPingOne.startping(5000);
+}, 7000);
+
+setTimeout(() => {
+  console.log('Start  NewsetTimeout');
+  timerPingOne.stopping();
+}, 30000);

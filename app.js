@@ -1957,7 +1957,7 @@ var util = require('util');
 // console.dir(console.log, { showHidden: true, depth: null });
 // test Github editing
 
-//closure more function exit in one function closure
+//closure exit more function on the object
 
 let timerPingClosure = function () {
   let ping;

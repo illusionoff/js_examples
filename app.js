@@ -2019,7 +2019,6 @@ let funEnd = () => {
 let timerConfigObj = { period: 5000, funStart: funStart, funEnd: funEnd };
 
 let timerClosure = function (timerConfigObj) {
-  // {period: 1000,funStart:funStart,funEnd:funEnd}
   let period = timerConfigObj.period;
   let funStart = timerConfigObj.funStart || function () { console.log('null function funStart') };
   let funEnd = timerConfigObj.funEnd || function () { console.log('null function funEnd') };
@@ -2028,18 +2027,12 @@ let timerClosure = function (timerConfigObj) {
   function start() {
     stop()
     id = setInterval(function () {
-      // ws.send(JSON.stringify({ "cmd": "ping" }));
-      // let timeNaw = new Date().getTime();
-      // console.log('time ping bith start ======================================', timeNaw);
       funStart();
     }, period);
   }
 
   function stop() {
     clearInterval(id);
-    // let timeNaw = new Date().getTime();
-    // console.log('stopPing');
-    // console.log('time pong bith stop ======================================', timeNaw);
     funEnd();
   }
 
@@ -2048,12 +2041,6 @@ let timerClosure = function (timerConfigObj) {
 
 let timerPingOne = timerClosure(timerConfigObj);
 
-// let timerPingTwo = timerPingClosure();
-// timerPingOne.startping();
-// timerPingOne.startping();
-// // timerPingTwo.startping();
-// timerPingOne.stopping();
-// timerPingTwo.stopping();
 
 setTimeout(() => {
   console.log('Start  NewsetTimeout');

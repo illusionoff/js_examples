@@ -2005,22 +2005,24 @@ var util = require('util');
 //   console.log('Start  NewsetTimeout');
 //   timerPingOne.stopping();
 // }, 30000);
+let ws = 'websocket';
 let funStart = () => {
   let timeNaw = new Date().getTime();
-  console.log('This  funStart timeNaw =', timeNaw)
+  console.log('This  funStart timeNaw =', timeNaw);
+  console.log('ws=', ws);
 };
 let funEnd = () => {
   let timeNaw = new Date().getTime();
-  console.log('This funEnd timeNaw=', timeNaw)
+  console.log('This funEnd timeNaw=', timeNaw);
 };
 
-let timerIntitObj = { period: 5000, funStart: funStart, funEnd: funEnd };
+let timerConfigObj = { period: 5000, funStart: funStart, funEnd: funEnd };
 
-let timerClosure = function (timerIntitObj) {
+let timerClosure = function (timerConfigObj) {
   // {period: 1000,funStart:funStart,funEnd:funEnd}
-  let period = timerIntitObj.period;
-  let funStart = timerIntitObj.funStart || function () { };
-  let funEnd = timerIntitObj.funEnd || function () { };
+  let period = timerConfigObj.period;
+  let funStart = timerConfigObj.funStart || function () { console.log('null function funStart') };
+  let funEnd = timerConfigObj.funEnd || function () { console.log('null function funEnd') };
 
   let id;
   function start() {
@@ -2044,7 +2046,7 @@ let timerClosure = function (timerIntitObj) {
   return { start, stop }
 };
 
-let timerPingOne = timerClosure(timerIntitObj);
+let timerPingOne = timerClosure(timerConfigObj);
 
 // let timerPingTwo = timerPingClosure();
 // timerPingOne.startping();
@@ -2055,12 +2057,12 @@ let timerPingOne = timerClosure(timerIntitObj);
 
 setTimeout(() => {
   console.log('Start  NewsetTimeout');
-  timerPingOne.start();
+  timerPingOne.start(ws);
 }, 5000);
 
 setTimeout(() => {
   console.log('Start  NewsetTimeout');
-  timerPingOne.start();
+  timerPingOne.start(ws);
 }, 7000);
 
 setTimeout(() => {

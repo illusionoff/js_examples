@@ -1959,31 +1959,93 @@ var util = require('util');
 
 //closure exit more function on the object
 
-let timerPingClosure = function () {
-  let ping;
-  function startPing(time) {
-    stopPing()
-    ping = setInterval(function () {
-      // ws.send(JSON.stringify({ "cmd": "ping" }));
-      let timeNaw = new Date().getTime();
-      console.log('time ping bith start ======================================', timeNaw);
-    }, time);
-  }
+// let timerPingClosure = function () {
+//   let ping;
+//   function startPing(time) {
+//     stopPing()
+//     ping = setInterval(function () {
+//       // ws.send(JSON.stringify({ "cmd": "ping" }));
+//       let timeNaw = new Date().getTime();
+//       console.log('time ping bith start ======================================', timeNaw);
+//     }, time);
+//   }
 
-  function stopPing() {
-    clearInterval(ping);
-    let timeNaw = new Date().getTime();
-    // console.log('stopPing');
-    // console.log('time pong bith stop ======================================', timeNaw);
-  }
+//   function stopPing() {
+//     clearInterval(ping);
+//     let timeNaw = new Date().getTime();
+//     // console.log('stopPing');
+//     // console.log('time pong bith stop ======================================', timeNaw);
+//   }
 
-  return {
-    startping: startPing,
-    stopping: stopPing
-  }
+//   return {
+//     startping: startPing,
+//     stopping: stopPing
+//   }
+// };
+
+// let timerPingOne = timerPingClosure();
+// // let timerPingTwo = timerPingClosure();
+// // timerPingOne.startping();
+// // timerPingOne.startping();
+// // // timerPingTwo.startping();
+// // timerPingOne.stopping();
+// // timerPingTwo.stopping();
+
+// setTimeout(() => {
+//   console.log('Start  NewsetTimeout');
+//   timerPingOne.startping(1000);
+// }, 5000);
+
+// setTimeout(() => {
+//   console.log('Start  NewsetTimeout');
+//   timerPingOne.startping(5000);
+// }, 7000);
+
+// setTimeout(() => {
+//   console.log('Start  NewsetTimeout');
+//   timerPingOne.stopping();
+// }, 30000);
+let funStart = () => {
+  let timeNaw = new Date().getTime();
+  console.log('This  funStart timeNaw =', timeNaw)
+};
+let funEnd = () => {
+  let timeNaw = new Date().getTime();
+  console.log('This funEnd timeNaw=', timeNaw)
 };
 
-let timerPingOne = timerPingClosure();
+let timerIntitObj = { period: 5000, funStart: funStart, funEnd: funEnd };
+
+let timerClosure = function (timerIntitObj) {
+  // {period: 1000,funStart:funStart,funEnd:funEnd}
+  let period = timerIntitObj.period;
+  let funStart = timerIntitObj.funStart || function () { };
+  let funEnd = timerIntitObj.funEnd || function () { };
+
+  let id;
+  function start() {
+    stop()
+    id = setInterval(function () {
+      // ws.send(JSON.stringify({ "cmd": "ping" }));
+      // let timeNaw = new Date().getTime();
+      // console.log('time ping bith start ======================================', timeNaw);
+      funStart();
+    }, period);
+  }
+
+  function stop() {
+    clearInterval(id);
+    // let timeNaw = new Date().getTime();
+    // console.log('stopPing');
+    // console.log('time pong bith stop ======================================', timeNaw);
+    funEnd();
+  }
+
+  return { start, stop }
+};
+
+let timerPingOne = timerClosure(timerIntitObj);
+
 // let timerPingTwo = timerPingClosure();
 // timerPingOne.startping();
 // timerPingOne.startping();
@@ -1993,15 +2055,15 @@ let timerPingOne = timerPingClosure();
 
 setTimeout(() => {
   console.log('Start  NewsetTimeout');
-  timerPingOne.startping(1000);
+  timerPingOne.start();
 }, 5000);
 
 setTimeout(() => {
   console.log('Start  NewsetTimeout');
-  timerPingOne.startping(5000);
+  timerPingOne.start();
 }, 7000);
 
 setTimeout(() => {
   console.log('Start  NewsetTimeout');
-  timerPingOne.stopping();
+  timerPingOne.stop();
 }, 30000);

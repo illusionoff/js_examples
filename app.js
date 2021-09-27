@@ -2044,12 +2044,12 @@ let timerPingOne = timerClosure(timerConfigObj);
 
 setTimeout(() => {
   console.log('Start  NewsetTimeout');
-  timerPingOne.start(ws);
+  timerPingOne.start();
 }, 5000);
 
 setTimeout(() => {
   console.log('Start  NewsetTimeout');
-  timerPingOne.start(ws);
+  timerPingOne.start();
 }, 7000);
 
 setTimeout(() => {

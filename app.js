@@ -2005,55 +2005,60 @@ var util = require('util');
 //   console.log('Start  NewsetTimeout');
 //   timerPingOne.stopping();
 // }, 30000);
-let ws = 'websocket';
-let funStart = (ws) => {
-  let timeNaw = new Date().getTime();
-  console.log('This  funStart timeNaw =', timeNaw);
-  console.log('ws=', ws);
-  // return ws
-};
-let funEnd = () => {
-  let timeNaw = new Date().getTime();
-  console.log('This funEnd timeNaw=', timeNaw);
-};
+////////////////////////////////////////////////////////////////
+let one = 'websocket';
+let two = 'REST API';
+let tree = 'GRAPH API'
+const { timerClosure, funStartPing, funEndPing } = require('./functions');
 
-let timerConfigObj = { period: 5000, funStart: funStart, funEnd: funEnd };
+// let funStart = () => {
+//   let timeNaw = new Date().getTime();
+//   console.log('This  funStart timeNaw =', timeNaw);
+//   // console.log('ws=', ws);
+//   // return ws
+// };
 
-let timerClosure = function (timerConfigObj) {
-  // let period = timerConfigObj.period;
-  // let funStart = timerConfigObj.funStart || function () { console.log('null function funStart') };
-  // let funEnd = timerConfigObj.funEnd || function () { console.log('null function funEnd') };
 
-  let id;
-  function start() {
-    stop()
-    id = setInterval(function () {
-      timerConfigObj.funStart(ws);
-    }, timerConfigObj.period);
-  }
-
-  function stop() {
-    clearInterval(id);
-    timerConfigObj.funEnd();
-  }
-
-  return { start, stop }
+let timerConfigObj = {
+  period: 5000, funStart: funStartPing, funEnd: funEndPing,
+  funStartArguments: [one, two], funEndArguments: [tree]
 };
 
-let timerPingOne = timerClosure(timerConfigObj);
+// let timerClosure = function (timerConfigObj) {
+//   // let period = timerConfigObj.period;
+//   // let funStart = timerConfigObj.funStart || function () { console.log('null function funStart') };
+//   // let funEnd = timerConfigObj.funEnd || function () { console.log('null function funEnd') };
+
+//   let id;
+//   function start() {
+//     stop()
+//     id = setInterval(function () {
+//       timerConfigObj.funStart(ws);
+//     }, timerConfigObj.period);
+//   }
+
+//   function stop() {
+//     clearInterval(id);
+//     timerConfigObj.funEnd();
+//   }
+
+//   return { start, stop }
+// };
+
+let timerPing = timerClosure(timerConfigObj);
 
 
 setTimeout(() => {
   console.log('Start  NewsetTimeout');
-  timerPingOne.start();
+  timerPing.start();
 }, 5000);
 
 setTimeout(() => {
   console.log('Start  NewsetTimeout');
-  timerPingOne.start();
+  timerPing.start();
 }, 7000);
 
 setTimeout(() => {
   console.log('Start  NewsetTimeout');
-  timerPingOne.stop();
+  timerPing.stop();
 }, 30000);

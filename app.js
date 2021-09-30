@@ -1796,10 +1796,10 @@ const arrB = [1.19, 1.19, 1.19, 1.19, 1.19, 1.30, 1.19, 1.19, 1.19, 1.19, 1.19, 
 //   console.log(item);
 // })
 
-const tetsConsoleLog = `initialBith.takerComissions =
-          initialBith.makerComissions =
-          initialBith.initialFetchURL= true
-`;
+// const tetsConsoleLog = `initialBith.takerComissions =
+//           initialBith.makerComissions =
+//           initialBith.initialFetchURL= true
+// `;
 // function consoleLogGroup(str) {
 //   console.log(str.split('\n').map((item) => item.trim()).join('\n'));
 // }
@@ -2005,55 +2005,75 @@ var util = require('util');
 //   console.log('Start  NewsetTimeout');
 //   timerPingOne.stopping();
 // }, 30000);
-let ws = 'websocket';
-let funStart = (ws) => {
-  let timeNaw = new Date().getTime();
-  console.log('This  funStart timeNaw =', timeNaw);
-  console.log('ws=', ws);
-  // return ws
-};
-let funEnd = () => {
-  let timeNaw = new Date().getTime();
-  console.log('This funEnd timeNaw=', timeNaw);
-};
+////////////////////////////////////////////////////////////////
+// let one = 'websocket';
+// let two = 'REST API';
+// let tree = 'GRAPH API'
+// const { timerClosure, funStartPing, funEndPing } = require('./functions');
 
-let timerConfigObj = { period: 5000, funStart: funStart, funEnd: funEnd };
-
-let timerClosure = function (timerConfigObj) {
-  // let period = timerConfigObj.period;
-  // let funStart = timerConfigObj.funStart || function () { console.log('null function funStart') };
-  // let funEnd = timerConfigObj.funEnd || function () { console.log('null function funEnd') };
-
-  let id;
-  function start() {
-    stop()
-    id = setInterval(function () {
-      timerConfigObj.funStart(ws);
-    }, timerConfigObj.period);
-  }
-
-  function stop() {
-    clearInterval(id);
-    timerConfigObj.funEnd();
-  }
-
-  return { start, stop }
-};
-
-let timerPingOne = timerClosure(timerConfigObj);
+// let funStart = () => {
+//   let timeNaw = new Date().getTime();
+//   console.log('This  funStart timeNaw =', timeNaw);
+//   // console.log('ws=', ws);
+//   // return ws
+// };
 
 
-setTimeout(() => {
-  console.log('Start  NewsetTimeout');
-  timerPingOne.start();
-}, 5000);
+// let timerConfigObj = {
+//   period: 5000, funStart: funStartPing, funEnd: funEndPing,
+//   funStartArguments: [one, two], funEndArguments: [tree]
+// };
 
-setTimeout(() => {
-  console.log('Start  NewsetTimeout');
-  timerPingOne.start();
-}, 7000);
+// let timerClosure = function (timerConfigObj) {
+//   // let period = timerConfigObj.period;
+//   // let funStart = timerConfigObj.funStart || function () { console.log('null function funStart') };
+//   // let funEnd = timerConfigObj.funEnd || function () { console.log('null function funEnd') };
 
-setTimeout(() => {
-  console.log('Start  NewsetTimeout');
-  timerPingOne.stop();
-}, 30000);
+//   let id;
+//   function start() {
+//     stop()
+//     id = setInterval(function () {
+//       timerConfigObj.funStart(ws);
+//     }, timerConfigObj.period);
+//   }
+
+//   function stop() {
+//     clearInterval(id);
+//     timerConfigObj.funEnd();
+//   }
+
+//   return { start, stop }
+// };
+
+// let timerPing = timerClosure(timerConfigObj);
+
+
+// setTimeout(() => {
+//   console.log('Start  NewsetTimeout');
+//   timerPing.start();
+// }, 5000);
+
+// setTimeout(() => {
+//   console.log('Start  NewsetTimeout');
+//   timerPing.start();
+// }, 7000);
+
+// setTimeout(() => {
+//   console.log('Start  NewsetTimeout');
+//   timerPing.stop();
+// }, 30000);
+
+// ////////////////////////////////////////
+// Тест параметров объекта как аргументы функции
+
+// function testObjArguments({ a, b, c = 0, d = 0 }) {
+//   console.log('a =', a);
+//   console.log('b =', b);
+//   console.log('c =', c);
+//   console.log('d =', d);
+// }
+
+// // objArguments = { a: 'a', b: 'b', c: 10, d: 20 };
+// objArguments = { a: 'a', b: 'b' };
+
+// testObjArguments(objArguments);

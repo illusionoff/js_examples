@@ -1796,10 +1796,10 @@ const arrB = [1.19, 1.19, 1.19, 1.19, 1.19, 1.30, 1.19, 1.19, 1.19, 1.19, 1.19, 
 //   console.log(item);
 // })
 
-const tetsConsoleLog = `initialBith.takerComissions =
-          initialBith.makerComissions =
-          initialBith.initialFetchURL= true
-`;
+// const tetsConsoleLog = `initialBith.takerComissions =
+//           initialBith.makerComissions =
+//           initialBith.initialFetchURL= true
+// `;
 // function consoleLogGroup(str) {
 //   console.log(str.split('\n').map((item) => item.trim()).join('\n'));
 // }
@@ -2006,10 +2006,10 @@ var util = require('util');
 //   timerPingOne.stopping();
 // }, 30000);
 ////////////////////////////////////////////////////////////////
-let one = 'websocket';
-let two = 'REST API';
-let tree = 'GRAPH API'
-const { timerClosure, funStartPing, funEndPing } = require('./functions');
+// let one = 'websocket';
+// let two = 'REST API';
+// let tree = 'GRAPH API'
+// const { timerClosure, funStartPing, funEndPing } = require('./functions');
 
 // let funStart = () => {
 //   let timeNaw = new Date().getTime();
@@ -2019,10 +2019,10 @@ const { timerClosure, funStartPing, funEndPing } = require('./functions');
 // };
 
 
-let timerConfigObj = {
-  period: 5000, funStart: funStartPing, funEnd: funEndPing,
-  funStartArguments: [one, two], funEndArguments: [tree]
-};
+// let timerConfigObj = {
+//   period: 5000, funStart: funStartPing, funEnd: funEndPing,
+//   funStartArguments: [one, two], funEndArguments: [tree]
+// };
 
 // let timerClosure = function (timerConfigObj) {
 //   // let period = timerConfigObj.period;
@@ -2045,20 +2045,35 @@ let timerConfigObj = {
 //   return { start, stop }
 // };
 
-let timerPing = timerClosure(timerConfigObj);
+// let timerPing = timerClosure(timerConfigObj);
 
 
-setTimeout(() => {
-  console.log('Start  NewsetTimeout');
-  timerPing.start();
-}, 5000);
+// setTimeout(() => {
+//   console.log('Start  NewsetTimeout');
+//   timerPing.start();
+// }, 5000);
 
-setTimeout(() => {
-  console.log('Start  NewsetTimeout');
-  timerPing.start();
-}, 7000);
+// setTimeout(() => {
+//   console.log('Start  NewsetTimeout');
+//   timerPing.start();
+// }, 7000);
 
-setTimeout(() => {
-  console.log('Start  NewsetTimeout');
-  timerPing.stop();
-}, 30000);
+// setTimeout(() => {
+//   console.log('Start  NewsetTimeout');
+//   timerPing.stop();
+// }, 30000);
+
+// ////////////////////////////////////////
+// Тест параметров объекта как аргументы функции
+
+// function testObjArguments({ a, b, c = 0, d = 0 }) {
+//   console.log('a =', a);
+//   console.log('b =', b);
+//   console.log('c =', c);
+//   console.log('d =', d);
+// }
+
+// // objArguments = { a: 'a', b: 'b', c: 10, d: 20 };
+// objArguments = { a: 'a', b: 'b' };
+
+// testObjArguments(objArguments);

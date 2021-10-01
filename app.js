@@ -2096,25 +2096,34 @@ const fs = require("fs");
 const parse = require('csv-parse');
 
 function parseCSV() {
+  let result = '';
   // fs.readFile("./csv/test_profit_12.csv", "utf8",
-  fs.readFile("./csv/test_profit_12_copy.csv", "utf8",
+  // fs.readFile("./csv/test_profit_12_copy.csv", "utf8",
+  fs.readFile("./csv/test2_profit_651_1631860141152.csv", "utf8",
     function (error, input) {
       console.log("Асинхронное чтение файла");
       if (error) throw error; // если возникла ошибка
       // console.log('data file:', data);
       parse(input, {
-        comment: '#',
+        // comment: '#',
         // columns: ['col', 'bayGate', 'bayBith', 'sellGate', 'sellBith', 'diffSell', 'diffBay', 'timeServer', 'timeBith', 'init']
+        // columns: true
       }, function (err, output) {
         if (err) throw err; // если возникла ошибка
-        console.log('output=', output);
+        // console.log('output=', output);
+        result = output;
+        // return output
         // assert.deepStrictEqual(
         //   output,
         //   [ [ '1', '2', '3', '4' ], [ 'a', 'b', 'c', 'd' ] ]
         // )
-      })
-
+      });
+      console.log('result=', result);
+      // return result
     });
 }
 
 parseCSV();
+
+
+// console.log('result=', result);

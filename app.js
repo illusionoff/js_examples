@@ -2077,3 +2077,16 @@ var util = require('util');
 // objArguments = { a: 'a', b: 'b' };
 
 // testObjArguments(objArguments);
+//////////////////////////////////////////////////////
+// Счетчик-замыкание
+// function closure(name) {
+//   let count = 0;
+//   function main(name) {
+//     console.log(`${name} count=`, count);
+//     count++;
+//   }
+//   return (name) => main(name)
+// }
+
+// let variableClosure = closure();
+// let variableClosure2 = closure();

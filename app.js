@@ -2094,12 +2094,13 @@ var util = require('util');
 // for reactcriptoarbitr_tets
 const fs = require("fs");
 const parse = require('csv-parse');
-
+let result = '';
+const CSVFilePath = "./csv/test2_profit_651_1631860141152.csv";
 function parseCSV() {
-  let result = '';
+
   // fs.readFile("./csv/test_profit_12.csv", "utf8",
   // fs.readFile("./csv/test_profit_12_copy.csv", "utf8",
-  fs.readFile("./csv/test2_profit_651_1631860141152.csv", "utf8",
+  fs.readFile(CSVFilePath, "utf8",
     function (error, input) {
       console.log("Асинхронное чтение файла");
       if (error) throw error; // если возникла ошибка
@@ -2110,7 +2111,7 @@ function parseCSV() {
         // columns: true
       }, function (err, output) {
         if (err) throw err; // если возникла ошибка
-        // console.log('output=', output);
+        console.log('output=', output);
         result = output;
         // return output
         // assert.deepStrictEqual(
@@ -2118,12 +2119,33 @@ function parseCSV() {
         //   [ [ '1', '2', '3', '4' ], [ 'a', 'b', 'c', 'd' ] ]
         // )
       });
-      console.log('result=', result);
+
+      // console.log('rapseResult=', rapseResult);
       // return result
     });
 }
 
-parseCSV();
+// parseCSV();
+///////////////////
+// Самый лучший способ из получившихся
+const processFile = async () => {
+  records = []
+  const parser = fs
+    // .createReadStream(`${__dirname}/fs_read.csv`)
+    .createReadStream(CSVFilePath)
+    .pipe(parse({
+      // CSV options if any
+      // comment: '#',
+      // columns: ['col', 'bayGate', 'bayBith', 'sellGate', 'sellBith', 'diffSell', 'diffBay', 'timeServer', 'timeBith', 'init']
+      // columns: true
+    }));
+  for await (const record of parser) {
+    // Work with each record
+    records.push(record)
+  }
+  return records
+}
 
-
-// console.log('result=', result);
+processFile()
+  .then((result2) => { console.log('result2=', result2) })
+  .catch(console.error)

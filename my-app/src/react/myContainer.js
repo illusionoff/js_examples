@@ -20,6 +20,7 @@
 import React, { useState } from "react";
 import Button from './Button';
 import Tree from './Tree'
+import Four from './Four'
 
 const MyContainer = () => {
   const [backgroundColor, setBackgroundColor] = useState('red');
@@ -34,6 +35,7 @@ const MyContainer = () => {
       <div>
         {/* <Tree backgroundColor={backgroundColor} /> */}
         <Tree />
+        <Four name='Александр' />
       </div>
     </>
   );

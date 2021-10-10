@@ -18,24 +18,27 @@
 // }
 
 import React, { useState } from "react";
-import Button from './Button';
+// import Button from './Button';
 import Tree from './Tree'
 import Four from './Four'
+import Five from './Five'
 
 const MyContainer = () => {
-  const [backgroundColor, setBackgroundColor] = useState('red');
-  console.log('MyContainer backgroundColor=', backgroundColor);
-  console.log('MyContainer module restart');
+  // const [backgroundColor, setBackgroundColor] = useState('red');
+  // console.log('MyContainer backgroundColor=', backgroundColor);
+  // console.log('MyContainer module restart');
+  let MyProps = 'MyProps in MyContainer';
 
   return (
     <>
-      <div style={{ backgroundColor: backgroundColor }}>
+      {/* <div style={{ backgroundColor: backgroundColor }}>
         <Button setBackgroundColor={setBackgroundColor} backgroundColor={backgroundColor} />
-      </div>
+      </div> */}
       <div>
         {/* <Tree backgroundColor={backgroundColor} /> */}
         <Tree />
         <Four name='Александр' />
+        <Five />
       </div>
     </>
   );

@@ -2293,3 +2293,77 @@ MyFetch(1);
 //   .then((two) => console.log('two()=', two))
 //   .catch((e) => console.log('ERROR', e))
 /////
+//////////////////////////////
+////Последовательный fetch и 5 способов решения
+////https://habr.com/ru/post/490524/
+// const urls = ['url1', 'url2', 'url3'];
+
+// function fakeFetch(url, params = '-') {
+//   // этот вывод в консоль покажет порядок вызовов с их входящими параметрами
+//   console.log(`fakeFetch to: ${url} with params: ${params}`);
+//   return new Promise(resolve => {
+//     setTimeout(() => resolve(`${url} is DONE`), 1000);
+//   })
+// };
+// reduce
+// function reduceWay(callback) {
+//   urls.reduce((accum, item) => {
+//     return accum
+//       .then(res => fakeFetch(item, res))
+//   }, Promise.resolve())
+//     .then(result => callback(result));
+// }
+
+// reduceWay(result => console.log(`result: ${result}`))
+//async/await
+// async function asyncAwaitWay(callback) {
+//   let results;
+//   for (const url of urls) {
+//     results = await fakeFetch(url, results);
+//   }
+//   callback(result);
+// }
+// asyncAwaitWay(result => console.log(`result: ${result}`))
+//реальные тесты
+// function fakeFetch(url, params = '-') {
+//   // этот вывод в консоль покажет порядок вызовов с их входящими параметрами
+//   console.log(`fakeFetch to: ${url} with params: ${params}`);
+//   return new Promise(resolve => {
+//     setTimeout(() => resolve(`${url} is DONE`), 1000);
+//   })
+// };
+
+
+// async function asyncAwaitWay(callback) {
+//   let results;
+//   for (const url of urls) {
+//     // results = await fakeFetch(url, results);
+//     // postData('/api/message/getdircsv', {})
+//     results = await postData(url, results);
+
+//   }
+//   callback(result);
+// }
+
+// async function postData(url = '', data = {}) {
+//   // Default options are marked with *
+//   const response = await fetch(url, {
+//     method: 'POST', // *GET, POST, PUT, DELETE, etc.
+//     mode: 'cors', // no-cors, *cors, same-origin
+//     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+//     credentials: 'same-origin', // include, *same-origin, omit
+//     headers: {
+//       'Content-Type': 'application/json'
+//       // 'Content-Type': 'application/x-www-form-urlencoded',
+//     },
+//     redirect: 'follow', // manual, *follow, error
+//     referrerPolicy: 'no-referrer', // no-referrer, *client
+//     body: JSON.stringify(data) // body data type must match "Content-Type" header
+//   });
+//   return await response.json(); // parses JSON response into native JavaScript objects
+// }
+
+// const urls = ['/api/message/getdircsv', '/api/message/loadfile'];
+
+// asyncAwaitWay(result => console.log(`result: ${result}`))
+//////////////////// НЕУЧИТЫВАЕТ ЕСЛИ НЕОБХОДИМО ПЕРЕДАВАТЬ ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ В ЗАПРОСАХ

@@ -2243,9 +2243,11 @@ async function computed2(number) {
 
 // вариант #2
 async function MyFetch(number) {
-  let result1 = await computed(number);
-  let result2 = await computed2(result1);
-  console.log('result2()=', result2)
+  try {
+    let result1 = await computed(number);
+    let result2 = await computed2(result1);
+    console.log('result2()=', result2);
+  } catch (e) { console.log('ERROR', e) }
 }
 
 //// Работает вариант #1

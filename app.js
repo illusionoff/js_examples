@@ -1823,6 +1823,7 @@ const arrB = [1.19, 1.19, 1.19, 1.19, 1.19, 1.30, 1.19, 1.19, 1.19, 1.19, 1.19, 
 // }
 
 var util = require('util');
+const { match } = require('assert');
 
 // function consoleLogGroup(strings, ...expressions) {
 //   let strOut = '';
@@ -2092,38 +2093,38 @@ var util = require('util');
 // let variableClosure2 = closure();
 /////////////////////////////////////////////////////////////
 // for reactcriptoarbitr_tets
-const fs = require("fs");
-const parse = require('csv-parse');
-let result = '';
-const CSVFilePath = "./csv/test2_profit_651_1631860141152.csv";
-function parseCSV() {
+// const fs = require("fs");
+// const parse = require('csv-parse');
+// let result = '';
+// const CSVFilePath = "./csv/test2_profit_651_1631860141152.csv";
+// function parseCSV() {
 
-  // fs.readFile("./csv/test_profit_12.csv", "utf8",
-  // fs.readFile("./csv/test_profit_12_copy.csv", "utf8",
-  fs.readFile(CSVFilePath, "utf8",
-    function (error, input) {
-      console.log("Асинхронное чтение файла");
-      if (error) throw error; // если возникла ошибка
-      // console.log('data file:', data);
-      parse(input, {
-        // comment: '#',
-        // columns: ['col', 'bayGate', 'bayBith', 'sellGate', 'sellBith', 'diffSell', 'diffBay', 'timeServer', 'timeBith', 'init']
-        // columns: true
-      }, function (err, output) {
-        if (err) throw err; // если возникла ошибка
-        console.log('output=', output);
-        result = output;
-        // return output
-        // assert.deepStrictEqual(
-        //   output,
-        //   [ [ '1', '2', '3', '4' ], [ 'a', 'b', 'c', 'd' ] ]
-        // )
-      });
+//   // fs.readFile("./csv/test_profit_12.csv", "utf8",
+//   // fs.readFile("./csv/test_profit_12_copy.csv", "utf8",
+//   fs.readFile(CSVFilePath, "utf8",
+//     function (error, input) {
+//       console.log("Асинхронное чтение файла");
+//       if (error) throw error; // если возникла ошибка
+//       // console.log('data file:', data);
+//       parse(input, {
+//         // comment: '#',
+//         // columns: ['col', 'bayGate', 'bayBith', 'sellGate', 'sellBith', 'diffSell', 'diffBay', 'timeServer', 'timeBith', 'init']
+//         // columns: true
+//       }, function (err, output) {
+//         if (err) throw err; // если возникла ошибка
+//         console.log('output=', output);
+//         result = output;
+//         // return output
+//         // assert.deepStrictEqual(
+//         //   output,
+//         //   [ [ '1', '2', '3', '4' ], [ 'a', 'b', 'c', 'd' ] ]
+//         // )
+//       });
 
-      // console.log('rapseResult=', rapseResult);
-      // return result
-    });
-}
+//       // console.log('rapseResult=', rapseResult);
+//       // return result
+//     });
+// }
 
 // parseCSV();
 ///////////////////
@@ -2193,24 +2194,100 @@ function parseCSV() {
 //// Test State in othet companent React
 
 
-function once(fn, context) {
-  var result;
+// function once(fn, context) {
+//   var result;
 
-  return function () {
-    if (fn) {
-      result = fn.apply(context || this, arguments);
-      fn = null;
-    }
+//   return function () {
+//     if (fn) {
+//       result = fn.apply(context || this, arguments);
+//       fn = null;
+//     }
 
-    return result;
-  };
+//     return result;
+//   };
+// }
+
+// // Пример использования
+// var canOnlyFireOnce = once(function () {
+//   console.log('Запущено!');
+// });
+
+// canOnlyFireOnce(); // "Запущено!"
+// canOnlyFireOnce(); // Не запущено
+// canOnlyFireOnce(); // Не запущено
+/////////////////////////////////////////////
+//// Последовательность асинхронных функций принимающие результат предыдущей функции
+async function computedAll(col) {
+  for (let i = 0; i < col; i++) {
+    await Math.trunc(Math.random * 20) * col;
+  }
+}
+async function computed(number) {
+  console.log('This computed1 Start ', number);
+  await computedAll(300_1000);
+  console.log('This computed1 End ', number);
+  return number + 1000;
 }
 
-// Пример использования
-var canOnlyFireOnce = once(function () {
-  console.log('Запущено!');
-});
+async function computed2(number) {
+  console.log('This computed2 ', number);
+  await computedAll(1000);
+  return number;
+}
+// вариант #1
+// async function MyFetch(number) {
+//   let result1 = await computed(number);
+//   let result2 = await computed2(result1);
+//   return result2
+// }
 
-canOnlyFireOnce(); // "Запущено!"
-canOnlyFireOnce(); // Не запущено
-canOnlyFireOnce(); // Не запущено
+// вариант #2
+async function MyFetch(number) {
+  let result1 = await computed(number);
+  let result2 = await computed2(result1);
+  console.log('result2()=', result2)
+}
+
+//// Работает вариант #1
+// MyFetch(1)
+//   .then((myFetch) => { console.log('myFetch()=', myFetch) })
+//   .catch((e) => console.log('ERROR', e))
+//
+
+//// Работает вариант #2
+MyFetch(1);
+//
+
+// async function f() {
+//   return await MyFetch().then((myFetch) => console.log('myFetch()=', myFetch))
+// }
+// // f();
+// let result = f();
+// console.log('result=', result);
+
+//// используя синтаксис Promice
+//Пример
+// doSomething().then(function(result) {
+//   return doSomethingElse(result);
+// })
+// .then(function(newResult) {
+//   return doThirdThing(newResult);
+// })
+// .then(function(finalResult) {
+//   console.log('Итоговый результат: ' + finalResult);
+// })
+// .catch(failureCallback);
+//// С стрелочными функциями
+// doSomething()
+// .then(result => doSomethingElse(result))
+// .then(newResult => doThirdThing(newResult))
+// .then(finalResult => {
+//   console.log(`Итоговый результат: ${finalResult}`);
+// })
+// .catch(failureCallback);
+//// Работает
+// computed(1)
+//   .then(first => computed2(first))
+//   .then((two) => console.log('two()=', two))
+//   .catch((e) => console.log('ERROR', e))
+/////

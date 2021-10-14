@@ -2217,48 +2217,48 @@ const { match } = require('assert');
 // canOnlyFireOnce(); // Не запущено
 /////////////////////////////////////////////
 //// Последовательность асинхронных функций принимающие результат предыдущей функции
-async function computedAll(col) {
-  for (let i = 0; i < col; i++) {
-    await Math.trunc(Math.random * 20) * col;
-  }
-}
-async function computed(number) {
-  console.log('This computed1 Start ', number);
-  await computedAll(300_1000);
-  console.log('This computed1 End ', number);
-  return number + 1000;
-}
-
-async function computed2(number) {
-  console.log('This computed2 ', number);
-  await computedAll(1000);
-  return number;
-}
-// вариант #1
-// async function MyFetch(number) {
-//   let result1 = await computed(number);
-//   let result2 = await computed2(result1);
-//   return result2
+// async function computedAll(col) {
+//   for (let i = 0; i < col; i++) {
+//     await Math.trunc(Math.random * 20) * col;
+//   }
+// }
+// async function computed(number) {
+//   console.log('This computed1 Start ', number);
+//   await computedAll(300_1000);
+//   console.log('This computed1 End ', number);
+//   return number + 1000;
 // }
 
-// вариант #2
-async function MyFetch(number) {
-  try {
-    let result1 = await computed(number);
-    let result2 = await computed2(result1);
-    console.log('result2()=', result2);
-  } catch (e) { console.log('ERROR', e) }
-}
+// async function computed2(number) {
+//   console.log('This computed2 ', number);
+//   await computedAll(1000);
+//   return number;
+// }
+// // вариант #1
+// // async function MyFetch(number) {
+// //   let result1 = await computed(number);
+// //   let result2 = await computed2(result1);
+// //   return result2
+// // }
 
-//// Работает вариант #1
-// MyFetch(1)
-//   .then((myFetch) => { console.log('myFetch()=', myFetch) })
-//   .catch((e) => console.log('ERROR', e))
-//
+// // вариант #2
+// async function MyFetch(number) {
+//   try {
+//     let result1 = await computed(number);
+//     let result2 = await computed2(result1);
+//     console.log('result2()=', result2);
+//   } catch (e) { console.log('ERROR', e) }
+// }
 
-//// Работает вариант #2
-MyFetch(1);
-//
+// //// Работает вариант #1
+// // MyFetch(1)
+// //   .then((myFetch) => { console.log('myFetch()=', myFetch) })
+// //   .catch((e) => console.log('ERROR', e))
+// //
+
+// //// Работает вариант #2
+// MyFetch(1);
+// //
 
 // async function f() {
 //   return await MyFetch().then((myFetch) => console.log('myFetch()=', myFetch))
@@ -2293,3 +2293,19 @@ MyFetch(1);
 //   .then((two) => console.log('two()=', two))
 //   .catch((e) => console.log('ERROR', e))
 /////
+
+function asyncFunc() {
+  return new Promise((resolve, reject) => { // (A)
+    setTimeout(() => resolve('DONE'), 100); // (B)
+  });
+}
+
+async function main() {
+  const x = await asyncFunc(); // (A)
+  console.log('Result: ' + x); // (B)
+
+  // Same as:
+  // asyncFunc()
+  // .then(x => console.log('Result: '+x));
+}
+main();

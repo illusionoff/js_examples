@@ -2424,17 +2424,19 @@ async function getdircsv1() {
   return await postData('https://reqbin.com/echo/post/json', {})
 }
 
-async function getdircsv2() {
-  return await postData('https://vivazzi.pro/test-request/?json=true&par_1=foo&par_2=bar', {})
+async function getdircsv2(result1) {
+  return await postData('https://vivazzi.pro/test-request/?json=true&par_1=foo&par_2=result1', {})
 }
 
-// getdircsv1().then((result) => console.log('getdircsv1=', result));
-// getdircsv2().then((result) => console.log('getdircsv2=', result));
+getdircsv1().then((result) => console.log('getdircsv1=', result));
+getdircsv2().then((result) => console.log('getdircsv2=', result));
 
 async function twoAsyncFunction() {
   const funOne = await getdircsv1();
+  const funTwo = await getdircsv2();
+  // const result = funOne+funTwo;
   // getdircsv2().then((result) => console.log('getdircsv2=', result));
-  return funOne
+  return funTwo
 }
 
-twoAsyncFunction().then((result) => { console.log('twoAsyncFunction=', result) });
+// twoAsyncFunction().then((result) => { console.log('twoAsyncFunction=', result) });

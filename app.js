@@ -2295,36 +2295,36 @@ const { match } = require('assert');
 /////
 
 
-async function asyncFunc1(param1) {
-  // return new Promise((resolve, reject) => { // (A)
-  //   setTimeout(() => resolve('param1' + param1), 1000); // (B)
-  // });
-  // async function asyncFunc1_1(param1) { return await setTimeout((param1) => resolve('param1' + param1), 1000) }
+// async function asyncFunc1(param1) {
+//   // return new Promise((resolve, reject) => { // (A)
+//   //   setTimeout(() => resolve('param1' + param1), 1000); // (B)
+//   // });
+//   // async function asyncFunc1_1(param1) { return await setTimeout((param1) => resolve('param1' + param1), 1000) }
 
-  return fakeFetch('URL 1', param1)
-}
+//   return fakeFetch('URL 1', param1)
+// }
 
-async function asyncFunc2(param2) {
-  // return new Promise((resolve, reject) => { // (A)
-  //   setTimeout(() => resolve('DONE: ' + param2 + 'param2'), 150); // (B)
-  // });
+// async function asyncFunc2(param2) {
+//   // return new Promise((resolve, reject) => { // (A)
+//   //   setTimeout(() => resolve('DONE: ' + param2 + 'param2'), 150); // (B)
+//   // });
 
-  // async function asyncFunc2_1(param1) { return await setTimeout((param2) => resolve('DONE: ' + param2 + 'param2'), 150) }
+//   // async function asyncFunc2_1(param1) { return await setTimeout((param2) => resolve('DONE: ' + param2 + 'param2'), 150) }
 
-  return fakeFetch('URL 2', param2)
-}
+//   return fakeFetch('URL 2', param2)
+// }
 
-async function main() {
-  const x = await asyncFunc1(3000); // (A)
-  const y = await asyncFunc2(1000); // (A)
-  console.log('Result x:  ' + x); // (B)
-  console.log('Result y:  ' + y); // (B)
+// async function main() {
+//   const x = await asyncFunc1(3000); // (A)
+//   const y = await asyncFunc2(1000); // (A)
+//   console.log('Result x:  ' + x); // (B)
+//   console.log('Result y:  ' + y); // (B)
 
-  // Same as:
-  // asyncFunc()
-  // .then(x => console.log('Result: '+x));
-}
-main();
+//   // Same as:
+//   // asyncFunc()
+//   // .then(x => console.log('Result: '+x));
+// }
+// main();
 //////////////////////////////
 ////Последовательный fetch и 5 способов решения
 ////https://habr.com/ru/post/490524/
@@ -2400,43 +2400,53 @@ function fakeFetch(url, params = 1000) {
 // asyncAwaitWay(result => console.log(`result: ${result}`))
 //////////////////// НЕУЧИТЫВАЕТ ЕСЛИ НЕОБХОДИМО ПЕРЕДАВАТЬ ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ В ЗАПРОСАХ
 
-const fetch = require('node-fetch');
-async function postData(url = '', data = {}) {
-  // Default options are marked with *
-  const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrerPolicy: 'no-referrer', // no-referrer, *client
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
-  // console.log('response=', response);
-  return await response.json(); // parses JSON response into native JavaScript objects
-}
+// const fetch = require('node-fetch');
+// async function postData(url = '', data = {}) {
+//   // Default options are marked with *
+//   const response = await fetch(url, {
+//     method: 'POST', // *GET, POST, PUT, DELETE, etc.
+//     mode: 'cors', // no-cors, *cors, same-origin
+//     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+//     credentials: 'same-origin', // include, *same-origin, omit
+//     headers: {
+//       'Content-Type': 'application/json'
+//       // 'Content-Type': 'application/x-www-form-urlencoded',
+//     },
+//     redirect: 'follow', // manual, *follow, error
+//     referrerPolicy: 'no-referrer', // no-referrer, *client
+//     body: JSON.stringify(data) // body data type must match "Content-Type" header
+//   });
+//   // console.log('response=', response);
+//   return await response.json(); // parses JSON response into native JavaScript objects
+// }
 
-async function getdircsv1() {
-  return await postData('https://reqbin.com/echo/post/json', {})
-}
+// async function getdircsv1() {
+//   return await postData('https://reqbin.com/echo/post/json', {})
+// }
 
-async function getdircsv2(result1) {
-  return await postData('https://vivazzi.pro/test-request/?json=true&par_1=foo&par_2=result1', {})
-}
+// async function getdircsv2(result1) {
+//   return await postData('https://vivazzi.pro/test-request/?json=true&par_1=foo&par_2=result1', {})
+// }
 
-getdircsv1().then((result) => console.log('getdircsv1=', result));
-getdircsv2().then((result) => console.log('getdircsv2=', result));
+// getdircsv1().then((result) => console.log('getdircsv1=', result));
+// getdircsv2().then((result) => console.log('getdircsv2=', result));
 
-async function twoAsyncFunction() {
-  const funOne = await getdircsv1();
-  const funTwo = await getdircsv2();
-  // const result = funOne+funTwo;
-  // getdircsv2().then((result) => console.log('getdircsv2=', result));
-  return funTwo
-}
+// async function twoAsyncFunction() {
+//   const funOne = await getdircsv1();
+//   const funTwo = await getdircsv2();
+//   // const result = funOne+funTwo;
+//   // getdircsv2().then((result) => console.log('getdircsv2=', result));
+//   return funTwo
+// }
 
 // twoAsyncFunction().then((result) => { console.log('twoAsyncFunction=', result) });
+
+//////////////// тестирование сохранения ссылки на объект, а не перезапись ссылки новым одинаковым объектом
+
+
+const obj = { a: 2 };
+const objNew = { a: 2 };
+
+console.log('obj = objNew :', obj === objNew);
+Object.assign(obj, objNew);
+console.log('obj = objNew :', obj === objNew);

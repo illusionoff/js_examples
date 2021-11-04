@@ -1,7 +1,17 @@
 // import logo from './logo.svg';
 import './App.css';
-import MyContainer from './react/myContainer';
+// import MyContainer from './react/myContainer';
+import React, { useState } from "react";
+import TestReferentialEqualityUseMemo from './react/TestReferentialEqualityUseMemo';
+
+// let a = 1;
+// let b = 2;
+// let c = 3;
 function App() {
+  const [state, setState] = useState({ a: 1, b: 2, c: 3 });
+  function AppSetState(data) {
+    setState(data);
+  }
   return (
     <div className="App">
       {/* <header className="App-header"> */}
@@ -18,7 +28,8 @@ function App() {
           Learn React
         </a> */}
       {/* </header> */}
-      <MyContainer />
+      {/* <MyContainer /> */}
+      <TestReferentialEqualityUseMemo value={state} setState={AppSetState} />
     </div>
   );
 }

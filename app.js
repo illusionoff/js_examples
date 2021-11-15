@@ -2444,9 +2444,29 @@ function fakeFetch(url, params = 1000) {
 //////////////// тестирование сохранения ссылки на объект, а не перезапись ссылки новым одинаковым объектом
 
 
-const obj = { a: 2 };
-const objNew = { a: 2 };
+// const obj = { a: 2 };
+// const objNew = { a: 2 };
 
-console.log('obj = objNew :', obj === objNew);
-Object.assign(obj, objNew);
-console.log('obj = objNew :', obj === objNew);
+// console.log('obj = objNew :', obj === objNew);
+// Object.assign(obj, objNew);
+// console.log('obj = objNew :', obj === objNew);
+
+
+//// Promice.All
+
+const promise1 = new Promise((resolve, reject) => {
+  reject("Непредвиденная ошибка");
+  setTimeout(resolve, 500, "Hello");
+});
+const promise2 = new Promise((resolve, reject) => {
+  console.log('test promice')
+  // setTimeout(resolve, 1000, "World");
+  resolve()
+});
+
+Promise.allSettled([promise1, promise2])
+  .then(values => {
+    const [promise1data, promise2data] = values;
+    console.log(promise1data);  // {status: "rejected", reason: "Непредвиденная ошибка"}
+    console.log(promise2data);  // {status: "fulfilled", value: "World"}
+  });

@@ -2455,18 +2455,17 @@ function fakeFetch(url, params = 1000) {
 //// Promice.All
 
 const promise1 = new Promise((resolve, reject) => {
-  reject("Непредвиденная ошибка");
+  // reject("Непредвиденная ошибка");
   setTimeout(resolve, 500, "Hello");
 });
 const promise2 = new Promise((resolve, reject) => {
   console.log('test promice')
   // setTimeout(resolve, 1000, "World");
-  resolve()
+  resolve('test promice')
 });
 
-Promise.allSettled([promise1, promise2])
+Promise.all([promise1, promise2])
   .then(values => {
     const [promise1data, promise2data] = values;
-    console.log(promise1data);  // {status: "rejected", reason: "Непредвиденная ошибка"}
-    console.log(promise2data);  // {status: "fulfilled", value: "World"}
+    console.log(promise1data, promise2data);    // Hello World
   });

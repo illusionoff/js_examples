@@ -2454,18 +2454,48 @@ function fakeFetch(url, params = 1000) {
 
 //// Promice.All
 
-const promise1 = new Promise((resolve, reject) => {
-  // reject("Непредвиденная ошибка");
-  setTimeout(resolve, 500, "Hello");
-});
-const promise2 = new Promise((resolve, reject) => {
-  console.log('test promice')
-  // setTimeout(resolve, 1000, "World");
-  resolve('test promice')
-});
+// const promise1 = new Promise((resolve, reject) => {
+//   // reject("Непредвиденная ошибка");
+//   setTimeout(resolve, 1500, "Hello");
+// });
+// const promise2 = new Promise((resolve, reject) => {
+//   // console.log('test promice')
+//   setTimeout(resolve, 1000, "World");
+//   // resolve('test promice')
+// });
 
-Promise.all([promise1, promise2])
-  .then(values => {
-    const [promise1data, promise2data] = values;
-    console.log(promise1data, promise2data);    // Hello World
-  });
+// Promise.all([promise1, promise2])
+//   .then(values => {
+//     const [promise1data, promise2data] = values;
+//     console.log(promise1data, promise2data);    // Hello World
+//   });
+
+async function sleep(time = 1) {
+  const sleepMilliseconds = time * 1000
+
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(`Slept for: ${sleepMilliseconds}ms`)
+    }, sleepMilliseconds)
+  })
+}
+
+async function main() {
+  // 1. 
+  console.time('main')
+
+  // 2.
+  const [firstCall, secondCall, thirdCall] = await Promise.all([
+    sleep(1),
+    sleep(2),
+    sleep(3)
+  ])
+  console.log(`First call: ${firstCall}`)
+  console.log(`Second call: ${secondCall}`)
+  console.log(`Third call: ${thirdCall}`)
+
+  // 3.
+  console.timeEnd('main')
+}
+
+main()

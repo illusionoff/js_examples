@@ -2454,18 +2454,68 @@ function fakeFetch(url, params = 1000) {
 
 //// Promice.All
 
-const promise1 = new Promise((resolve, reject) => {
-  // reject("Непредвиденная ошибка");
-  setTimeout(resolve, 500, "Hello");
-});
-const promise2 = new Promise((resolve, reject) => {
-  console.log('test promice')
-  // setTimeout(resolve, 1000, "World");
-  resolve('test promice')
-});
+// const promise1 = new Promise((resolve, reject) => {
+//   // reject("Непредвиденная ошибка");
+//   setTimeout(resolve, 500, "Hello");
+// });
+// const promise2 = new Promise((resolve, reject) => {
+//   console.log('test promice')
+//   // setTimeout(resolve, 1000, "World");
+//   resolve('test promice')
+// });
 
-Promise.all([promise1, promise2])
-  .then(values => {
-    const [promise1data, promise2data] = values;
-    console.log(promise1data, promise2data);    // Hello World
-  });
+// Promise.all([promise1, promise2])
+//   .then(values => {
+//     const [promise1data, promise2data] = values;
+//     console.log(promise1data, promise2data);    // Hello World
+//   });
+
+// пузырьковая сортировка
+// function bubble(arr) {
+//   const length = arr.length;
+
+//   for (let i = 0; i < length; i++) {
+//     for (let j = 0; j < length - i - 1; j++) {
+//       const current = arr[j]; // текущий элемент
+//       const next = arr[j + 1]; // следующий
+
+
+//       // если текущий больше следующего, меняем их местами
+//       if (current > next) {
+//         arr[j] = next;
+//         arr[j + 1] = current;
+//       }
+//     }
+//   }
+
+//   return arr;
+// }
+
+// const arr = [4, 7, 9, 2, 3, 1, 8, 2, 4, 6, 5];
+
+// console.log('bubble=', bubble(arr));
+
+// пузырьковая сортировка
+function bubble(arr) {
+  const length = arr.length;
+
+  for (let i = 0; i < length; i++) {
+    for (let j = 0; j < length - i - 1; j++) {
+      const current = arr[j]; // текущий элемент
+      const next = arr[j + 1]; // следующий
+
+
+      // если текущий больше следующего, меняем их местами
+      if (current > next) {
+        arr[j] = next;
+        arr[j + 1] = current;
+      }
+    }
+  }
+
+  return arr;
+}
+
+const arr = [4, 7, 9, 2, 3, 1, 8, 2, 4, 6, 5];
+
+console.log('bubble=', bubble(arr));

@@ -2552,3 +2552,33 @@ function fakeFetch(url, params = 1000) {
 // }
 
 // main()
+
+
+// let jobs = [0, 1, 2, 3];
+// let responseJobs = jobs.reduce((accum, item, index, arrJobs) => {
+//   console.log('dsssssssssss');
+//   if (index % 2 != 0) {
+//     console.log(index);
+//   }
+
+//   accum.push(item + 'dsds')
+//   return accum
+// }, []);
+// console.log('responseJobs=', responseJobs);
+// console.log('typeof responseJobs=', typeof responseJobs);
+
+// проверка значений по умолчанию в виде внешней функции в функциях в JS
+
+// function defaultLastName() {
+//   return "Smith"
+// }
+
+// function getName(firstName, LastName = defaultLastName()) {
+//   if (LastName) {
+//     return `Привет ${firstName},${LastName}`
+//   }
+//   return `Привет ${firstName}`
+// }
+
+// // console.log(getName("Alex", "Siniakou"));
+// console.log(getName("Alex"));

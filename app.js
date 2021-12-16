@@ -2456,12 +2456,14 @@ function fakeFetch(url, params = 1000) {
 
 // const promise1 = new Promise((resolve, reject) => {
 //   // reject("Непредвиденная ошибка");
+
 //   setTimeout(resolve, 500, "Hello");
 // });
 // const promise2 = new Promise((resolve, reject) => {
 //   console.log('test promice')
 //   // setTimeout(resolve, 1000, "World");
 //   resolve('test promice')
+
 // });
 
 // Promise.all([promise1, promise2])
@@ -2469,6 +2471,7 @@ function fakeFetch(url, params = 1000) {
 //     const [promise1data, promise2data] = values;
 //     console.log(promise1data, promise2data);    // Hello World
 //   });
+
 
 // пузырьковая сортировка
 // function bubble(arr) {

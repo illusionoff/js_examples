@@ -2583,19 +2583,19 @@ function fakeFetch(url, params = 1000) {
 // // console.log(getName("Alex", "Siniakou"));
 // console.log(getName("Alex"));
 
-// Неопределенный набор параметров
+// Неопределенный набор параметров работает
 
-function addNumbers(firstNumber, ...numberArray) {
+// function addNumbers(firstNumber, ...numberArray) {
 
-  let result = firstNumber;
-  for (let i = 0; i < numberArray.length; i++) {
-    result += numberArray[i];
-  }
-  return result;
-}
+//   let result = firstNumber;
+//   for (let i = 0; i < numberArray.length; i++) {
+//     result += numberArray[i];
+//   }
+//   return result;
+// }
 
-let num1 = addNumbers(3, 7, 8);
-console.log(num1); // 18
+// let num1 = addNumbers(3, 7, 8);
+// console.log(num1); // 18
 
-let num2 = addNumbers(3, 7, 8, 9, 4);
-console.log(num2); // 31
+// let num2 = addNumbers(3, 7, 8, 9, 4);
+// console.log(num2); // 31

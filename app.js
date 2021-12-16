@@ -2499,26 +2499,56 @@ function fakeFetch(url, params = 1000) {
 // console.log('bubble=', bubble(arr));
 
 // пузырьковая сортировка
-function bubble(arr) {
-  const length = arr.length;
+// function bubble(arr) {
+//   const length = arr.length;
 
-  for (let i = 0; i < length; i++) {
-    for (let j = 0; j < length - i - 1; j++) {
-      const current = arr[j]; // текущий элемент
-      const next = arr[j + 1]; // следующий
+//   for (let i = 0; i < length; i++) {
+//     for (let j = 0; j < length - i - 1; j++) {
+//       const current = arr[j]; // текущий элемент
+//       const next = arr[j + 1]; // следующий
 
 
-      // если текущий больше следующего, меняем их местами
-      if (current > next) {
-        arr[j] = next;
-        arr[j + 1] = current;
-      }
-    }
-  }
+//       // если текущий больше следующего, меняем их местами
+//       if (current > next) {
+//         arr[j] = next;
+//         arr[j + 1] = current;
+//       }
+//     }
+//   }
 
-  return arr;
-}
+//   return arr;
+// }
 
-const arr = [4, 7, 9, 2, 3, 1, 8, 2, 4, 6, 5];
+// const arr = [4, 7, 9, 2, 3, 1, 8, 2, 4, 6, 5];
 
-console.log('bubble=', bubble(arr));
+// console.log('bubble=', bubble(arr));
+
+// async function sleep(time = 1) {
+//   const sleepMilliseconds = time * 1000
+
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       resolve(`Slept for: ${sleepMilliseconds}ms`)
+//     }, sleepMilliseconds)
+//   })
+// }
+
+// async function main() {
+//   // 1.
+//   console.time('main')
+
+//   // 2.
+//   const [firstCall, secondCall, thirdCall] = await Promise.all([
+//     sleep(1),
+//     sleep(2),
+//     sleep(3)
+//   ])
+//   console.log(`First call: ${firstCall}`)
+//   console.log(`Second call: ${secondCall}`)
+//   console.log(`Third call: ${thirdCall}`)
+
+//   // 3.
+//   console.timeEnd('main')
+// }
+
+// main()

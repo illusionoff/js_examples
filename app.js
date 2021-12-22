@@ -2599,3 +2599,200 @@ function fakeFetch(url, params = 1000) {
 
 // let num2 = addNumbers(3, 7, 8, 9, 4);
 // console.log(num2); // 31
+
+//// #ООП Наследование
+// this
+// const obj = {
+//   name: 'Alex',
+//   sing() {
+//     console.log('a this ', this);//// a this  {name: "Alex", sing: ƒ}
+//     var anotherFunc = function () {
+//       console.log('b this ', this);// b this  Window {parent: Window, postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, …}
+//     }                              // node.js = b this  <ref *1> Object [global] {
+//     anotherFunc();
+//   }
+// };
+
+// obj.sing();
+
+//// #Инкапсуляция с использованием замыкания
+
+// const createCounter = () => {
+//   // Переменная, определенная в области действия фабрики или конструктора
+//   // является приватной для этой функции.
+//   let count = 0;
+
+//   return ({
+//     // Любые другие функции, определенные в той же области, являются привилегированными:
+//     // Они имеют доступ к закрытой переменной `count`
+//     // определенной в любом месте их цепочки областей видимости (содержащей области действия функции).
+//     click: () => count += 1,
+//     getCount: () => count.toLocaleString()
+//   });
+// };
+
+// const counter = createCounter();
+
+// counter.click();
+// counter.click();
+// counter.click();
+
+// console.log(counter.getCount()); // "3"
+
+
+//// Class
+
+// class Human {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   say() {
+//     return `this name: ${this.name}`
+//   }
+// }
+
+// let myHuman = new Human('Alex');
+// console.log(myHuman.say());
+
+// берем конструктор родителя
+// class Men extends Human {
+//   constructor(name) {
+//     super(name)
+//   }
+//   // Берем метод say у родителя.
+// }
+
+//// переопределение метода
+// class Coder extends Human {
+//   constructor(name) {
+//     super(name)
+//   }
+//   say() {
+//     return `This class Coder new say(). You name ${this.name}`
+//   }
+// }
+
+// let myCoder = new Coder('AlexCoder');
+// console.log(myCoder.say());
+
+//  Prototypal Inheritance Прототипное наследование ES5
+
+// function Person(name) {
+//   this.name = name;
+// }
+
+// Person.prototype = {
+//   eyes: 2,
+//   years: 36,
+//   say: function () {
+//     return `This Prototypal inheritanse - Person.prototype`
+//   }
+// }
+
+// let myPerson = new Person('AlexPerson');
+// console.log(myPerson.say());
+
+// console.log(`myPerson.name= ${myPerson.name}
+// eyes=${myPerson.eyes}
+// years=${myPerson.years}`)
+
+// Теперь, если у нас есть «класс» сотрудника, то можно наследовать его свойства.
+
+// function Employee(name, salary) {
+//   this.name = name;
+//   this.salary = salary;
+// }
+// // Прототип наследования
+// Employee.prototype = Object.create(Person.prototype);
+// Employee.prototype.constructor = Employee;// Устанавливаем его конструктор
+// //  Повторяем то же самое
+// // Создаем сотрудника
+// const em1 = new Employee('John', 3000);
+// // и прописываем следующее:
+// console.log(
+//   `name: ${em1.name}`,
+//   `salary: ${em1.salary} USD`,
+//   `eyes: ${em1.eyes}`,
+//   `years: ${em1.years}`,
+//   em1.say()
+// );
+
+// // Тот же пример в синтаксисе ES6.
+// class Person {
+//   constructor(name) {
+//     this.name = name;
+//     this.eyes = 2;
+//     this.mouth = 1;
+//   }
+//   sleep() {
+//     return 'zzz';
+//   }
+// }
+// class Employee extends Person {
+//   // расширяем конструктор
+//   constructor(name, salary) {
+//     super(name);
+//     this.salary = salary;
+//   }
+// }
+
+// Статичные методы:
+// class Dog {
+//   static whatIs() {
+//     return 'This is Dog class'
+//   }
+// }
+// //  Со static мы можем получить доступ к методам без создания экземпляров нового объекта класса.
+// console.log(Dog.whatIs());
+
+// Private методы и поля классов ЭКСПЕРИМЕТАЛЬНО добавив перед названием #
+
+// class ClassWithPrivateField {
+//   #privateField
+// }
+
+// class ClassWithPrivateMethod {
+//   #privateMethod() {
+//     return 'hello world'
+//   }
+
+//   metod() {
+//     return 'metod'
+//   }
+//   returnPrivateMethod() {
+//     // return this.metod()
+//     return this.#privateMethod() // вызов метода из другого метода внутри класса для объектов этого класса
+//   }
+// }
+
+// class ClassWithPrivateStaticField {
+//   static #PRIVATE_STATIC_FIELD = '#PRIVATE_STATIC_FIELD';
+//   static STATIC_FIELD = 'STATIC_FIELD'
+//   static returnPRIVATE_STATIC_FIELD() {
+//     return this.#PRIVATE_STATIC_FIELD
+//     // return this.STATIC_FIELD
+//   }
+// }
+
+// let myPrivateMet = new ClassWithPrivateMethod();
+
+// console.log(`myPrivateMet.returnPrivateMethod=${myPrivateMet.returnPrivateMethod()}`);
+// // console.log(`myPrivateMet. #privateMethodd=${myPrivateMet.#privateMethod()}`); // ошибка - приватный метод
+// // console.log(`ClassWithPrivateStaticField.#PRIVATE_STATIC_FIELD=${ClassWithPrivateStaticField.#PRIVATE_STATIC_FIELD}`);
+// console.log(`ClassWithPrivateStaticField.returnPRIVATE_STATIC_FIELD=${ClassWithPrivateStaticField.returnPRIVATE_STATIC_FIELD()}`);
+
+// наследование объектов
+//  __proto__  .
+let a = {
+  "test": 'Text',
+  "color": 'red'
+}
+
+let b = {
+  "name": 'Alex',
+  __proto__: a// в node.js так не работает
+}
+
+console.log('а=', a);
+console.log('b=', b);
+console.log('b.color=', b.color);

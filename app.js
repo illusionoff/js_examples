@@ -2782,17 +2782,17 @@ function fakeFetch(url, params = 1000) {
 // console.log(`ClassWithPrivateStaticField.returnPRIVATE_STATIC_FIELD=${ClassWithPrivateStaticField.returnPRIVATE_STATIC_FIELD()}`);
 
 // наследование объектов
-//  __proto__  .
-let a = {
-  "test": 'Text',
-  "color": 'red'
-}
+// //  __proto__  .
+// let a = {
+//   "test": 'Text',
+//   "color": 'red'
+// }
 
-let b = {
-  "name": 'Alex',
-  __proto__: a// в node.js так не работает
-}
+// let b = {
+//   "name": 'Alex',
+//   __proto__: a// в node.js так не работает
+// }
 
-console.log('а=', a);
-console.log('b=', b);
-console.log('b.color=', b.color);
+// console.log('а=', a);
+// console.log('b=', b);
+// console.log('b.color=', b.color);
